@@ -193,8 +193,8 @@ const HeroSection = () => (
       </h1>
 
       <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 font-body">
-        Rappels de RDV, questions répétitives, collecte d'avis : votre secrétariat ne devrait plus gérer tout ça manuellement.
-        EyesPilot automatise ces tâches sans changer votre organisation.
+        Chaque jour, votre secrétariat décroche pour les mêmes questions. EyesPilot réduit cette charge
+        en automatisant rappels, demandes administratives et collecte d'avis — sans rien changer à votre organisation.
       </p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -281,8 +281,8 @@ const SolutionSection = () => (
         {[
           {
             icon: <MessageSquare className="h-7 w-7 text-primary-foreground" />,
-            title: "Rappels SMS automatiques",
-            text: "Un SMS envoyé la veille du rendez-vous avec toutes les infos utiles. Moins d'oublis, moins d'appels de confirmation, moins de no-shows.",
+            title: "Moins d'appels pour votre secrétariat",
+            text: "Un rappel SMS la veille du RDV, avec tout ce dont le client a besoin. Résultat : moins d'appels de confirmation, moins de no-shows, un standard qui se libère.",
           },
           {
             icon: <Star className="h-7 w-7 text-primary-foreground" />,
@@ -425,22 +425,23 @@ const BetaSection = () => (
 
         <div className="relative">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-widest text-white">
-            Offre bêta — 10 cabinets pilotes
+            Accès pilote — places limitées
           </div>
 
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-            Rejoignez les premiers cabinets à tester EyesPilot.
+            Testez EyesPilot pendant 30 jours, sans engagement.
           </h2>
           <p className="text-white/80 mb-8 font-body max-w-xl mx-auto">
-            Places limitées. En échange de vos retours, vous bénéficiez de conditions tarifaires préférentielles — verrouillées à vie.
+            On commence par valider ensemble que ça fait sens pour votre cabinet.
+            Si les résultats sont là, on définit les conditions à long terme. Sinon, on désinstalle proprement.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto text-left">
             {[
-              "30 jours d'essai offerts, sans CB",
-              "Tarif bêta : 99 € / mois après l'essai",
+              "30 jours offerts, sans CB",
               "Installation complète incluse",
-              "Sans engagement, résiliable à tout moment",
+              "Rappels, avis, formulaires — tout activé dès J+1",
+              "Sans engagement. On part si ça ne convient pas.",
             ].map((item) => (
               <div key={item} className="flex items-start gap-2">
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-primary mt-0.5" />
@@ -449,19 +450,12 @@ const BetaSection = () => (
             ))}
           </div>
 
-          <div className="bg-white/10 border border-white/20 rounded-2xl p-4 mb-8 max-w-sm mx-auto">
-            <p className="text-sm text-white/70 mb-1 font-body">Tarif standard après la bêta</p>
-            <p className="text-2xl font-bold text-white font-heading">
-              149 € <span className="text-base font-normal text-white/80">/ mois</span>
-            </p>
-            <p className="text-xs text-white/60 mt-1 font-body">
-              SMS illimités inclus — les cabinets pilotes conservent leur tarif bêta à vie
+          <div className="bg-white/10 border border-white/20 rounded-2xl p-5 mb-8 max-w-sm mx-auto">
+            <p className="text-sm text-white/80 font-body leading-relaxed">
+              Le tarif mensuel est défini lors de l'appel, selon votre volume et votre configuration.
+              Les cabinets pilotes bénéficient d'un tarif préférentiel verrouillé à vie.
             </p>
           </div>
-
-          <p className="text-xs italic text-white/60 mb-8 font-body">
-            Résultats décevants à J+30 ? On désinstalle. Vous ne devez rien.
-          </p>
 
           <Button
             size="lg"
@@ -469,7 +463,7 @@ const BetaSection = () => (
             asChild
           >
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Candidater au programme bêta
+              Candidater au programme pilote
               <ArrowRight className="ml-1 h-5 w-5" />
             </a>
           </Button>
@@ -509,7 +503,7 @@ const FAQSection = () => {
     },
     {
       q: "Quels sont les tarifs après la bêta ?",
-      a: "Le tarif standard est de 149 € / mois, SMS inclus, sans engagement. Les cabinets pilotes conservent leur tarif bêta (99 € / mois) à vie — c'est le principal avantage de rejoindre maintenant.",
+      a: "Le tarif mensuel est défini lors de l'appel, selon votre volume et votre configuration. Les cabinets pilotes bénéficient d'un tarif préférentiel verrouillé à vie. Aucun montant ne s'applique avant la fin des 30 jours d'essai.",
     },
   ];
 
