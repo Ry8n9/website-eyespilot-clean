@@ -433,7 +433,7 @@ const BetaSection = () => (
           </h2>
           <p className="text-white/80 mb-8 font-body max-w-xl mx-auto">
             La période pilote permet de mesurer l'impact concret sur votre cabinet avant tout engagement financier.
-            À l'issue des 30 jours, nous définissons ensemble les conditions de la collaboration — ou nous désinstallons, sans frais.
+            À l'issue des 30 jours, nous définissons ensemble les conditions de la collaboration — ou nous vous désinstallons tout, sans frais.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto text-left">
