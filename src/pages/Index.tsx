@@ -432,8 +432,8 @@ const BetaSection = () => (
             Testez EyesPilot pendant 30 jours, sans engagement.
           </h2>
           <p className="text-white/80 mb-8 font-body max-w-xl mx-auto">
-            On commence par valider ensemble que ça fait sens pour votre cabinet.
-            Si les résultats sont là, on définit les conditions à long terme. Sinon, on désinstalle proprement.
+            La période pilote permet de mesurer l'impact concret sur votre cabinet avant tout engagement financier.
+            À l'issue des 30 jours, nous définissons ensemble les conditions de la collaboration — ou nous désinstallons, sans frais.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto text-left">
@@ -463,7 +463,7 @@ const BetaSection = () => (
             asChild
           >
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Candidater au programme pilote
+              Candidater
               <ArrowRight className="ml-1 h-5 w-5" />
             </a>
           </Button>
