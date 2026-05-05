@@ -181,7 +181,7 @@ const HeroSection = () => (
     <div className="container max-w-4xl mx-auto text-center relative z-10">
       <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 mb-6 text-xs md:text-sm font-semibold">
         <EyesPilotLogo size={16} interactive={false} />
-        Pensé pour les ophtalmos &amp; opticiens
+        Pensé pour les cabinets qui veulent moins d'appels et plus d'avis
       </div>
 
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-foreground">
@@ -193,8 +193,8 @@ const HeroSection = () => (
       </h1>
 
       <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 font-body">
-        30 à 80 appels par jour pour des questions répétitives. EyesPilot les automatise.
-        Votre équipe se concentre sur ce qui compte.
+        Rappels de RDV, questions répétitives, collecte d'avis : votre secrétariat ne devrait plus gérer tout ça manuellement.
+        EyesPilot automatise ces tâches sans changer votre organisation.
       </p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -226,19 +226,28 @@ const ProblemSection = () => (
   <section id="probleme" className="py-16 md:py-24 px-4 bg-background">
     <div className="container max-w-5xl mx-auto">
       <div className="card-blue rounded-2xl p-8 md:p-12 mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 font-heading">
-          Ophtalmo ou opticien : ces situations vous parlent ?
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading">
+          Les problématiques principales de votre cabinet :
         </h2>
-        <p className="text-muted-foreground font-body">
-          Ce qui fait perdre du temps à votre secrétariat, chaque jour.
-        </p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {[
-          { emoji: "📞", title: "Le téléphone sonne en boucle", text: "Horaires, ordonnances, documents à apporter. Les mêmes questions, toute la journée." },
-          { emoji: "💸", title: "Les no-shows coûtent cher", text: "Un créneau raté, c'est 60 à 120 € de CA perdu. Plusieurs milliers d'euros par mois." },
-          { emoji: "⭐", title: "Votre fiche Google plafonne", text: "Vos patients sont satisfaits mais ne laissent pas d'avis. Le cabinet d'à côté, si." },
+          {
+            emoji: "📞",
+            title: "Le téléphone sonne en boucle",
+            text: "Horaires, documents à apporter, renouvellements : les mêmes questions reviennent chaque jour. Votre secrétariat perd un temps précieux sur des appels qui pourraient être automatisés.",
+          },
+          {
+            emoji: "💸",
+            title: "Les rendez-vous non honorés",
+            text: "Sans rappel automatique, un client sur dix ne se présente pas. Chaque créneau raté représente un manque à gagner direct — et un agenda difficile à réoptimiser en urgence.",
+          },
+          {
+            emoji: "⭐",
+            title: "Trop peu d'avis Google",
+            text: "Vos clients sont satisfaits mais ne pensent pas à laisser un avis. Pendant ce temps, la concurrence creuse l'écart sur Google. Une relance bien placée changerait tout.",
+          },
         ].map((item) => (
           <div key={item.title} className="bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-md hover:-translate-y-1 transition-all duration-300">
             <div className="text-4xl mb-4">{item.emoji}</div>
@@ -259,20 +268,32 @@ const SolutionSection = () => (
   <section id="solution" className="py-16 md:py-24 px-4 bg-background">
     <div className="container max-w-5xl mx-auto">
       <div className="text-center mb-12">
-        <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-2">Comment on agit</p>
+        <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-2">EyesPilot : notre solution</p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-heading">
           Trois briques, un système qui tourne seul
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto font-body">
-          Rien à apprendre. On installe, on connecte, ça tourne.
+          Une fois installé, EyesPilot automatise les tâches chronophages sans modifier votre organisation.
         </p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {[
-          { icon: <MessageSquare className="h-7 w-7 text-primary-foreground" />, title: "Rappels SMS automatiques", text: "Un SMS la veille avec tout le nécessaire. Fini les appels de confirmation et les oublis." },
-          { icon: <Star className="h-7 w-7 text-primary-foreground" />, title: "Collecte d'avis Google", text: "Après la consultation, un message invite à laisser un avis en un clic. Les étoiles arrivent seules." },
-          { icon: <ClipboardList className="h-7 w-7 text-primary-foreground" />, title: "Formulaire en ligne", text: "Renouvellements, infos, documents : tout passe par un formulaire centralisé. Traité en batch." },
+          {
+            icon: <MessageSquare className="h-7 w-7 text-primary-foreground" />,
+            title: "Rappels SMS automatiques",
+            text: "Un SMS envoyé la veille du rendez-vous avec toutes les infos utiles. Moins d'oublis, moins d'appels de confirmation, moins de no-shows.",
+          },
+          {
+            icon: <Star className="h-7 w-7 text-primary-foreground" />,
+            title: "Collecte d'avis Google",
+            text: "Après chaque consultation, un message invite votre client à laisser un avis en un clic. Les étoiles s'accumulent sans que votre équipe n'ait à relancer.",
+          },
+          {
+            icon: <ClipboardList className="h-7 w-7 text-primary-foreground" />,
+            title: "Formulaire en ligne",
+            text: "Renouvellements, documents, informations courantes : tout passe par un formulaire centralisé. Votre secrétariat traite en batch, pas en urgence téléphonique.",
+          },
         ].map((item) => (
           <div key={item.title} className="card-blue rounded-2xl p-6 hover:shadow-md transition-all duration-300">
             <div className="w-14 h-14 rounded-xl hero-gradient flex items-center justify-center mb-4 shadow-lg shadow-primary/20">
@@ -286,10 +307,10 @@ const SolutionSection = () => (
 
       <div className="mt-10 card-blue rounded-2xl p-6 text-center">
         <p className="text-primary font-semibold text-lg font-heading">
-          Objectif 30 jours : -30 % d'appels et 10 à 20 avis Google.
+          Ce qu'on vise à J+30 : une réduction notable des appels répétitifs et vos premiers avis Google collectés automatiquement.
         </p>
         <p className="text-xs text-muted-foreground mt-2 font-body">
-          Estimations pour un cabinet moyen. Résultats mesurés à J+30.
+          Estimations pour un cabinet moyen. Résultats mesurés à J+30 et présentés lors du bilan.
         </p>
       </div>
     </div>
@@ -305,19 +326,28 @@ const StepsSection = () => (
     <div className="container max-w-5xl mx-auto">
       <div className="text-center mb-12">
         <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-2">Notre démarche</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-heading">
-          De l'appel au premier avis, en 30 jours
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading">
+          Comment procède-t-on ?
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto font-body">
-          On gère tout. Vous gardez votre façon de travailler.
-        </p>
       </div>
 
       <div className="space-y-6">
         {[
-          { step: "01", title: "Appel de 15 minutes", text: "On analyse votre volume d'appels et votre agenda. Sans obligation." },
-          { step: "02", title: "Installation en 48 h", text: "On configure, on forme votre secrétariat en 15 minutes. Vous ne touchez à rien." },
-          { step: "03", title: "Bilan chiffré à J+30", text: "Appels évités, avis générés, temps gagné. Si ça ne convient pas, on désinstalle." },
+          {
+            step: "01",
+            title: "Un appel de 15 minutes",
+            text: "On fait le point sur votre volume d'appels, votre agenda et vos besoins. Sans engagement, sans discours commercial.",
+          },
+          {
+            step: "02",
+            title: "Installation en 48 heures",
+            text: "On configure le système de A à Z. Formation de votre secrétariat en 15 minutes. Vous ne touchez à rien, ça tourne.",
+          },
+          {
+            step: "03",
+            title: "Bilan chiffré à J+30",
+            text: "Appels évités, avis collectés, temps récupéré : on vous présente les résultats. Si ça ne convient pas, on désinstalle sans frais.",
+          },
         ].map((item) => (
           <div key={item.step} className="card-blue rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-8 items-start">
             <span className="text-3xl md:text-4xl font-extrabold text-primary/20 font-heading shrink-0">{item.step}.</span>
@@ -345,10 +375,9 @@ const TrustSection = () => (
             <ShieldCheck className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading mb-1">
-              Données patients : on prend ça au sérieux
+            <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">
+              Données clients : on prend ça au sérieux
             </h2>
-            <p className="text-sm text-muted-foreground font-body">Vos obligations sont aussi les nôtres.</p>
           </div>
         </div>
 
@@ -368,7 +397,7 @@ const TrustSection = () => (
           <div className="flex items-start gap-2">
             <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
             <p className="text-muted-foreground font-body">
-              <span className="font-semibold text-foreground">Aucune donnée médicale</span>. Juste nom, téléphone, horaire.
+              <span className="font-semibold text-foreground">Aucune donnée médicale</span>. Nom, téléphone, horaire de RDV — rien de plus.
             </p>
           </div>
         </div>
@@ -378,7 +407,7 @@ const TrustSection = () => (
 );
 
 /* -------------------------------------------------------------------------- */
-/*  Programme bêta                                                             */
+/*  Offre / Tarifs                                                             */
 /* -------------------------------------------------------------------------- */
 
 const BetaSection = () => (
@@ -396,22 +425,22 @@ const BetaSection = () => (
 
         <div className="relative">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-widest text-white">
-            Programme bêta — 10 places
+            Offre bêta — 10 cabinets pilotes
           </div>
 
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-            On cherche 10 cabinets pilotes.
+            Rejoignez les premiers cabinets à tester EyesPilot.
           </h2>
           <p className="text-white/80 mb-8 font-body max-w-xl mx-auto">
-            En échange de votre retour, vous bénéficiez de conditions exclusives.
+            Places limitées. En échange de vos retours, vous bénéficiez de conditions tarifaires préférentielles — verrouillées à vie.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-3 mb-10 max-w-lg mx-auto text-left">
+          <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto text-left">
             {[
-              "30 jours offerts",
-              "Aucune CB, aucun engagement",
-              "Installation incluse",
-              "Tarif bêta verrouillé à vie",
+              "30 jours d'essai offerts, sans CB",
+              "Tarif bêta : 99 € / mois après l'essai",
+              "Installation complète incluse",
+              "Sans engagement, résiliable à tout moment",
             ].map((item) => (
               <div key={item} className="flex items-start gap-2">
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-primary mt-0.5" />
@@ -420,11 +449,18 @@ const BetaSection = () => (
             ))}
           </div>
 
-          <p className="text-sm text-white/80 mb-2 font-body">
-            Après la bêta : <span className="font-semibold text-white">~149 € / mois</span>, SMS inclus.
-          </p>
+          <div className="bg-white/10 border border-white/20 rounded-2xl p-4 mb-8 max-w-sm mx-auto">
+            <p className="text-sm text-white/70 mb-1 font-body">Tarif standard après la bêta</p>
+            <p className="text-2xl font-bold text-white font-heading">
+              149 € <span className="text-base font-normal text-white/80">/ mois</span>
+            </p>
+            <p className="text-xs text-white/60 mt-1 font-body">
+              SMS illimités inclus — les cabinets pilotes conservent leur tarif bêta à vie
+            </p>
+          </div>
+
           <p className="text-xs italic text-white/60 mb-8 font-body">
-            Résultats décevants ? On désinstalle, vous ne payez rien.
+            Résultats décevants à J+30 ? On désinstalle. Vous ne devez rien.
           </p>
 
           <Button
@@ -451,12 +487,30 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
-    { q: "Ça marche avec Doctolib ?", a: "Oui. EyesPilot se branche par-dessus sans rien changer à votre flux. Autre agenda ? On s'adapte lors de l'appel." },
-    { q: "Mon secrétariat doit faire quoi ?", a: "15 minutes de formation à l'installation, et c'est tout. Le système tourne seul ensuite." },
-    { q: "Comment vous gérez les données patients ?", a: "On stocke uniquement nom, numéro et horaire du RDV. Aucune donnée médicale. Hébergement France agréé santé, contrat RGPD fourni." },
-    { q: "En combien de temps c'est installé ?", a: "48 heures. Les premiers SMS partent ensuite, les premiers avis Google tombent sous 7 à 10 jours." },
-    { q: "Y a-t-il un engagement ?", a: "Non. Pilote de 30 jours gratuit sans CB. Si vous arrêtez, on désinstalle. Sinon, abonnement mensuel sans engagement." },
-    { q: "Combien ça coûte après la bêta ?", a: "~149 € / mois, SMS inclus. Les pilotes gardent leur tarif bêta à vie." },
+    {
+      q: "Que doit faire mon secrétariat ?",
+      a: "Presque rien. Une formation de 15 minutes suffit à la mise en route, et le système tourne ensuite de façon autonome. Pas de nouvelle interface à apprendre, pas de procédure à changer.",
+    },
+    {
+      q: "Comment sont gérées les données des clients ?",
+      a: "On collecte uniquement le nom, le numéro de téléphone et l'horaire du rendez-vous. Aucune donnée médicale n'est traitée. Hébergement en France chez un prestataire agréé santé, contrat RGPD fourni dès le démarrage.",
+    },
+    {
+      q: "Combien de temps dure l'installation ?",
+      a: "48 heures à compter de notre premier appel. Les rappels SMS partent dès le lendemain, et les premiers avis Google apparaissent généralement entre 7 et 14 jours après le lancement.",
+    },
+    {
+      q: "Ça marche avec Doctolib ?",
+      a: "Oui. EyesPilot fonctionne par-dessus votre agenda existant sans en modifier le fonctionnement. Vous utilisez un autre logiciel de prise de RDV ? On vérifie la compatibilité lors de l'appel — dans la grande majorité des cas, c'est compatible.",
+    },
+    {
+      q: "Y a-t-il un engagement ?",
+      a: "Non. L'essai de 30 jours est gratuit, sans CB. Si vous ne souhaitez pas continuer, on désinstalle et vous ne devez rien. Après la période pilote, l'abonnement est mensuel, résiliable à tout moment.",
+    },
+    {
+      q: "Quels sont les tarifs après la bêta ?",
+      a: "Le tarif standard est de 149 € / mois, SMS inclus, sans engagement. Les cabinets pilotes conservent leur tarif bêta (99 € / mois) à vie — c'est le principal avantage de rejoindre maintenant.",
+    },
   ];
 
   return (
@@ -502,12 +556,9 @@ const FAQSection = () => {
 const CTASection = () => (
   <section className="py-16 md:py-24 px-4 bg-background">
     <div className="container max-w-3xl mx-auto text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-heading">
-        15 minutes pour voir si c'est pour vous
+      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 font-heading">
+        Un appel de 15 minutes pour voir si c'est fait pour vous.
       </h2>
-      <p className="text-lg text-muted-foreground mb-8 font-body">
-        Sans blabla commercial. Juste vos besoins, et une réponse franche.
-      </p>
       <Button size="lg" className="rounded-full text-base px-8 py-6 shadow-xl shadow-primary/20 mb-10" asChild>
         <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
           Réserver mon appel gratuit <ArrowRight className="ml-1 h-5 w-5" />

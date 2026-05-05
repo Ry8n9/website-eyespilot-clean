@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npx vitest *)",
       "Bash(npm install *)",
-      "Bash(npm test *)"
+      "Bash(npm test *)",
+      "PowerShell(Head *)",
+      "PowerShell(dir \"C:\\\\Users\\\\rayan\\\\OneDrive\\\\Desktop\\\\eyespilot-main\\\\src\" -Recurse | Where-Object { $_.Extension -in \".tsx\", \".ts\", \".jsx\", \".js\" } | Select-Object FullName)"
     ]
   }
 }
