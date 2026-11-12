@@ -18,6 +18,7 @@ import { Comparison } from "@/components/sections/Comparison";
 import { Proof } from "@/components/sections/Proof";
 import { Process } from "@/components/sections/Process";
 import { Offers } from "@/components/sections/Offers";
+import { Fit } from "@/components/sections/Fit";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -201,6 +202,7 @@ const EyesPilotLanding = () => (
       showPrices={FLAGS.SHOW_PRICES}
       riskReversal={FLAGS.SHOW_GUARANTEE ? DONNEES_VALIDEES.riskReversal : null}
     />
+    <Fit />
     <TrustSection />
     <FAQSection />
     <CTASection />

@@ -244,3 +244,27 @@ export const offers = {
   voiceAgentPitch: "Vous avez déjà un site ? L'agent vocal existe aussi seul.",
   riskTitle: "Votre risque",
 };
+
+export const fit = {
+  eyebrow: "Pour qui",
+  title: "Pour qui c'est fait, et pour qui ça ne l'est pas.",
+  lead: "Mieux vaut le savoir avant l'appel.",
+  yes: {
+    title: "Adapté si…",
+    items: [
+      "Votre secrétariat est souvent déjà en ligne quand le téléphone sonne.",
+      "Les mêmes demandes reviennent : horaires, documents, renouvellements d'ordonnance.",
+      "Vous voulez fixer vous-même la conduite à tenir en cas d'urgence.",
+      "Votre cabinet propose déjà la prise de rendez-vous en ligne.",
+    ],
+  },
+  no: {
+    title: "Pas adapté si…",
+    items: [
+      "Vous voulez que chaque appel, même simple, soit pris par une personne.",
+      "Les urgences de votre cabinet doivent être traitées uniquement par un humain, dès le premier mot.",
+      "Personne au cabinet ne peut relire les fiches transmises au secrétariat.",
+      "Votre cabinet ne propose pas de prise de rendez-vous en ligne : le lien envoyé par SMS perd son intérêt.",
+    ],
+  },
+};

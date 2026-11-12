@@ -28,6 +28,7 @@ describe("EyesPilot Landing Page", () => {
     expect(screen.getByRole("heading", { name: "De votre premier appel à votre décision." })).toBeInTheDocument();
     expect(screen.getByText(/on prend ça au sérieux/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Une offre complète, ou l'assistant seul." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Pas adapté si/ })).toBeInTheDocument();
     expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
   });
 
