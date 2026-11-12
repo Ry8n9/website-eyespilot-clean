@@ -11,8 +11,14 @@ describe("EyesPilot Landing Page", () => {
   it("displays the hero heading", () => {
     render(<Index />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(/Moins d.appels/);
-    expect(h1).toHaveTextContent(/Votre secrétariat respire/);
+    expect(h1).toHaveTextContent("Le téléphone sonne.");
+    expect(h1).toHaveTextContent("Votre consultation continue.");
+  });
+
+  it("hero links to the call example", () => {
+    render(<Index />);
+    const link = screen.getByRole("link", { name: /Voir un appel en vrai/ });
+    expect(link).toHaveAttribute("href", "#exemple-appel");
   });
 
   it("renders all section headings", () => {
@@ -25,7 +31,7 @@ describe("EyesPilot Landing Page", () => {
     expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
   });
 
-  it("all primary CTA links open in a new tab with rel=noopener", () => {
+  it("all primary CTA links open Calendly in a new tab with an utm source", () => {
     render(<Index />);
     const ctaLinks = screen.getAllByRole("link", { name: /Réserver|Candidater/i });
     expect(ctaLinks.length).toBeGreaterThan(0);
@@ -33,6 +39,8 @@ describe("EyesPilot Landing Page", () => {
       expect(link).toHaveAttribute("target", "_blank");
       expect(link).toHaveAttribute("rel", "noopener noreferrer");
     });
+    const calendly = ctaLinks.filter((l) => l.getAttribute("href")?.includes("calendly.com"));
+    calendly.forEach((link) => expect(link.getAttribute("href")).toContain("utm_source=eyespilot.net"));
   });
 
   it("FAQ first item is open by default, toggles on click", () => {

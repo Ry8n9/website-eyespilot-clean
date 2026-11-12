@@ -13,59 +13,13 @@ import { useState } from "react";
 import { EyesPilotLogo } from "@/components/brand/EyesPilotLogo";
 import { Navbar } from "@/components/sections/Navbar";
 import { MobileCallBar } from "@/components/sections/MobileCallBar";
+import { Hero } from "@/components/sections/Hero";
+import { calendlyUrl } from "@/config";
 
-const CALENDLY_URL = "https://calendly.com/rayane-boukef-eyespilot/new-meeting";
+const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  Hero                                                                       */
-/* -------------------------------------------------------------------------- */
-
-const HeroSection = () => (
-  <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 px-4 bg-background overflow-hidden">
-    <div className="absolute top-20 -left-32 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-    <div className="absolute top-10 -right-32 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-
-    <div className="container max-w-4xl mx-auto text-center relative z-10">
-      <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 mb-6 text-xs md:text-sm font-semibold">
-        <EyesPilotLogo size={16} interactive={false} />
-        Pensé pour les cabinets qui veulent moins d'appels et plus d'avis
-      </div>
-
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-foreground">
-        Moins d'appels.
-        <br />
-        Plus d'avis Google.
-        <br />
-        <span className="text-primary">Votre secrétariat respire.</span>
-      </h1>
-
-      <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 font-body">
-        Chaque jour, votre secrétariat décroche pour les mêmes questions. EyesPilot réduit cette charge
-        en automatisant rappels, demandes administratives et collecte d'avis — sans rien changer à votre organisation.
-      </p>
-
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <Button size="lg" className="rounded-full text-base pl-8 pr-6 py-6 shadow-xl shadow-primary/20" asChild>
-          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-            Réserver un appel de 15 min
-            <ArrowRight className="ml-1 h-5 w-5" />
-          </a>
-        </Button>
-        <a href="#solution" className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
-          Voir comment ça marche →
-        </a>
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-10 text-xs md:text-sm text-muted-foreground">
-        <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-primary" />Compatible avec votre prise de rendez-vous en ligne</span>
-        <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-primary" />30 jours offerts, sans engagement</span>
-      </div>
-    </div>
-  </section>
-);
 
 /* -------------------------------------------------------------------------- */
 /*  Problème                                                                   */
@@ -440,7 +394,7 @@ const EyesPilotLanding = () => (
   <main className="overflow-x-hidden pb-24 md:pb-0">
     <Navbar />
     <MobileCallBar />
-    <HeroSection />
+    <Hero />
     <ProblemSection />
     <SolutionSection />
     <StepsSection />

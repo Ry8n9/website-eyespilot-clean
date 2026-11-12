@@ -27,3 +27,11 @@ export const nav = {
   closeMenu: "Fermer le menu",
   mobileBarLabel: "Réserver un appel de 15 min",
 };
+
+export const hero = {
+  eyebrow: "Assistant vocal pour les cabinets d'ophtalmologie",
+  titleLine1: "Le téléphone sonne.",
+  titleLine2: "Votre consultation continue.",
+  lead: "L'assistant EyesPilot décroche, comprend la demande du patient et la transmet par écrit à votre secrétariat. Pour les urgences, il applique la règle que vous avez validée.",
+  secondaryLink: "Voir un appel en vrai",
+};
