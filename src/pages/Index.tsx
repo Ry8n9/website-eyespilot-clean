@@ -19,6 +19,7 @@ import { Fit } from "@/components/sections/Fit";
 import { PatientData } from "@/components/sections/PatientData";
 import { Team } from "@/components/sections/Team";
 import { Faq } from "@/components/sections/Faq";
+import { FinalCta } from "@/components/sections/FinalCta";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -26,38 +27,6 @@ const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  CTA final                                                                  */
-/* -------------------------------------------------------------------------- */
-
-const CTASection = () => (
-  <section className="py-16 md:py-24 px-4 bg-background">
-    <div className="container max-w-3xl mx-auto text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 font-heading">
-        Un appel de 15 minutes pour voir si c'est fait pour vous.
-      </h2>
-      <Button size="lg" className="rounded-full text-base px-8 py-6 shadow-xl shadow-primary/20 mb-10" asChild>
-        <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-          Réserver mon appel gratuit <ArrowRight className="ml-1 h-5 w-5" />
-        </a>
-      </Button>
-
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-foreground">
-        <span className="font-semibold text-foreground flex items-center gap-2">
-          <EyesPilotLogo size={20} interactive={false} />
-          EyesPilot
-        </span>
-        <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-1 hover:text-primary transition-colors">
-          <Mail className="h-4 w-4" /> {CONTACT_EMAIL}
-        </a>
-        <a href={`tel:${CONTACT_PHONE}`} className="flex items-center gap-1 hover:text-primary transition-colors">
-          <Phone className="h-4 w-4" /> {CONTACT_PHONE_DISPLAY}
-        </a>
-      </div>
-    </div>
-  </section>
-);
 
 /* -------------------------------------------------------------------------- */
 /*  Footer                                                                     */
@@ -98,7 +67,7 @@ const EyesPilotLanding = () => (
     <PatientData />
     {FLAGS.SHOW_TEAM && <Team members={DONNEES_VALIDEES.team} />}
     <Faq />
-    <CTASection />
+    <FinalCta />
     <Footer />
   </main>
 );
