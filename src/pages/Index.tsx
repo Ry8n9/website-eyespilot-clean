@@ -15,6 +15,7 @@ import { CallExample } from "@/components/sections/CallExample";
 import { Problem } from "@/components/sections/Problem";
 import { Simulator } from "@/components/sections/Simulator";
 import { Comparison } from "@/components/sections/Comparison";
+import { Proof } from "@/components/sections/Proof";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -302,6 +303,7 @@ const EyesPilotLanding = () => (
     <Problem />
     {FLAGS.SHOW_SIMULATOR && <Simulator />}
     <Comparison />
+    {FLAGS.SHOW_PROOF && <Proof data={DONNEES_VALIDEES.proof} />}
     <StepsSection />
     <TrustSection />
     <BetaSection />

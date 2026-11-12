@@ -191,3 +191,10 @@ export const comparison = {
     },
   ],
 };
+
+export const proof = {
+  eyebrow: "En production",
+  title: "Un cabinet l'utilise déjà.",
+  metricSourcePrefix: "Source :",
+  callLogTitle: "Extrait du journal d'appels, anonymisé",
+};
