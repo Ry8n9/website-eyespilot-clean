@@ -333,3 +333,8 @@ export const finalCta = {
   title: "Un appel de 15 minutes pour savoir si c'est adapté à votre cabinet.",
   lead: "Nous écoutons comment votre cabinet reçoit ses appels. Vous repartez avec une réponse claire, oui ou non.",
 };
+
+export const footer = {
+  tagline: "Assistant vocal pour les cabinets d'ophtalmologie.",
+  contactTitle: "Contact",
+};
