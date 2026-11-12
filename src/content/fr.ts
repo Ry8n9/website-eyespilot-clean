@@ -35,3 +35,80 @@ export const hero = {
   lead: "L'assistant EyesPilot décroche, comprend la demande du patient et la transmet par écrit à votre secrétariat. Pour les urgences, il applique la règle que vous avez validée.",
   secondaryLink: "Voir un appel en vrai",
 };
+
+export const callExample = {
+  eyebrow: "Voir un appel en vrai",
+  title: "Ce qu'entend votre patient. Ce que reçoit votre secrétariat.",
+  lead: "Une demande courante, du premier mot à la fiche transmise. Les annotations montrent ce que vous gardez sous contrôle.",
+  caption: "Exemple de conversation, données fictives",
+  callStatus: "Appel entrant",
+  practice: "Cabinet du Dr Martin, ophtalmologie",
+  fictional: "Données fictives",
+  speakers: { patient: "Patient", assistant: "Assistant EyesPilot" },
+  turns: [
+    {
+      speaker: "assistant",
+      text: "Bonjour, cabinet du Dr Martin. Je suis l'assistant vocal du cabinet, une intelligence artificielle. Que puis-je faire pour vous ?",
+      note: 0,
+    },
+    {
+      speaker: "patient",
+      text: "Bonjour. Je voudrais renouveler mon ordonnance de lunettes, je vois moins bien de loin.",
+    },
+    {
+      speaker: "assistant",
+      text: "Je note. Avant tout : avez-vous une douleur à l'œil, un œil rouge ou une baisse brutale de la vision ?",
+      note: 1,
+    },
+    { speaker: "patient", text: "Non, rien de tout ça. C'est venu petit à petit." },
+    {
+      speaker: "assistant",
+      text: "Merci. Je vous envoie par SMS le lien de prise de rendez-vous du cabinet, et je transmets votre demande au secrétariat.",
+      note: 2,
+    },
+    { speaker: "patient", text: "Et si je préfère parler à quelqu'un ?" },
+    {
+      speaker: "assistant",
+      text: "Bien sûr. Je l'indique au secrétariat, pour qu'une personne du cabinet vous recontacte.",
+      note: 3,
+    },
+  ] as { speaker: "patient" | "assistant"; text: string; note?: number }[],
+  notes: [
+    {
+      title: "Une IA annoncée",
+      text: "Dès la première phrase, le patient sait à qui il parle.",
+    },
+    {
+      title: "Votre règle d'urgence",
+      text: "Les questions posées et la conduite à tenir sont celles que vous avez validées.",
+    },
+    {
+      title: "Le lien de rendez-vous par SMS",
+      text: "Le patient reçoit le lien de prise de rendez-vous du cabinet.",
+    },
+    {
+      title: "Un humain reste joignable",
+      text: "Si le patient demande une personne, sa demande part au secrétariat.",
+    },
+  ],
+  ticket: {
+    title: "Fiche transmise au secrétariat",
+    rows: [
+      { label: "Motif", value: "Renouvellement d'ordonnance de lunettes" },
+      { label: "Patient", value: "M. Lefèvre, rappel au numéro de l'appel" },
+      { label: "Règle d'urgence", value: "Questions posées, aucun signe d'alerte signalé" },
+      { label: "Fait", value: "Lien de prise de rendez-vous envoyé par SMS" },
+      { label: "À faire", value: "Recontacter le patient : il souhaite parler à une personne" },
+    ],
+  },
+  sms: {
+    title: "SMS reçu par le patient",
+    sender: "Cabinet Dr Martin",
+    text: "Bonjour, voici le lien pour prendre rendez-vous au cabinet du Dr Martin. Message automatique.",
+    linkLabel: "Prendre rendez-vous",
+  },
+  audio: {
+    title: "Écouter l'appel",
+    transcriptLabel: "Transcription",
+  },
+};

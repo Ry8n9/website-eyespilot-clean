@@ -4,9 +4,6 @@ import {
   Mail,
   ArrowRight,
   CheckCircle2,
-  MessageSquare,
-  Star,
-  ClipboardList,
   ShieldCheck,
 } from "lucide-react";
 import { useState } from "react";
@@ -14,7 +11,9 @@ import { EyesPilotLogo } from "@/components/brand/EyesPilotLogo";
 import { Navbar } from "@/components/sections/Navbar";
 import { MobileCallBar } from "@/components/sections/MobileCallBar";
 import { Hero } from "@/components/sections/Hero";
-import { calendlyUrl } from "@/config";
+import { CallExample } from "@/components/sections/CallExample";
+import { calendlyUrl, FLAGS } from "@/config";
+import { DONNEES_VALIDEES } from "@/content/validated";
 
 const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
@@ -58,63 +57,6 @@ const ProblemSection = () => (
             <p className="text-muted-foreground text-sm font-body">{item.text}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* -------------------------------------------------------------------------- */
-/*  Solution                                                                   */
-/* -------------------------------------------------------------------------- */
-
-const SolutionSection = () => (
-  <section id="solution" className="py-16 md:py-24 px-4 bg-background">
-    <div className="container max-w-5xl mx-auto">
-      <div className="text-center mb-12">
-        <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-2">EyesPilot : notre solution</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-heading">
-          Trois briques, un système qui tourne seul
-        </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto font-body">
-          Une fois installé, EyesPilot automatise les tâches chronophages sans modifier votre organisation.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          {
-            icon: <MessageSquare className="h-7 w-7 text-primary-foreground" />,
-            title: "Moins d'appels pour votre secrétariat",
-            text: "Un rappel SMS la veille du RDV, avec tout ce dont le patient a besoin. Résultat : moins d'appels de confirmation, moins de no-shows, un standard qui se libère.",
-          },
-          {
-            icon: <Star className="h-7 w-7 text-primary-foreground" />,
-            title: "Collecte d'avis Google",
-            text: "Après chaque consultation, un message invite votre patient à laisser un avis en un clic. Les étoiles s'accumulent sans que votre équipe n'ait à relancer.",
-          },
-          {
-            icon: <ClipboardList className="h-7 w-7 text-primary-foreground" />,
-            title: "Formulaire en ligne",
-            text: "Renouvellements, documents, informations courantes : tout passe par un formulaire centralisé. Votre secrétariat traite en batch, pas en urgence téléphonique.",
-          },
-        ].map((item) => (
-          <div key={item.title} className="card-blue rounded-2xl p-6 hover:shadow-md transition-all duration-300">
-            <div className="w-14 h-14 rounded-xl hero-gradient flex items-center justify-center mb-4 shadow-lg shadow-primary/20">
-              {item.icon}
-            </div>
-            <h3 className="text-lg font-bold text-foreground mb-2 font-heading">{item.title}</h3>
-            <p className="text-muted-foreground text-sm font-body">{item.text}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-10 card-blue rounded-2xl p-6 text-center">
-        <p className="text-primary font-semibold text-lg font-heading">
-          Ce qu'on vise à J+30 : une réduction notable des appels répétitifs et vos premiers avis Google collectés automatiquement.
-        </p>
-        <p className="text-xs text-muted-foreground mt-2 font-body">
-          Estimations pour un cabinet moyen. Résultats mesurés à J+30 et présentés lors du bilan.
-        </p>
       </div>
     </div>
   </section>
@@ -395,8 +337,8 @@ const EyesPilotLanding = () => (
     <Navbar />
     <MobileCallBar />
     <Hero />
+    <CallExample audio={FLAGS.SHOW_DEMO_AUDIO ? DONNEES_VALIDEES.demoAudio : null} />
     <ProblemSection />
-    <SolutionSection />
     <StepsSection />
     <TrustSection />
     <BetaSection />
