@@ -132,3 +132,19 @@ export const problem = {
     },
   ],
 };
+
+export const simulator = {
+  eyebrow: "Simulateur",
+  title: "Estimez le temps de secrétariat consacré aux appels répétitifs.",
+  lead: "Saisissez vos propres chiffres. Rien n'est prérempli : vous seul connaissez votre cabinet.",
+  fields: {
+    calls: { label: "Appels répétitifs par jour", hint: "Horaires, documents, ordonnances…" },
+    minutes: { label: "Minutes par appel, en moyenne", hint: "Prise de notes comprise" },
+    share: { label: "Sur 10 de ces appels, combien confier à l'assistant ?", hint: "De 0 à 10" },
+  },
+  formulaLabel: "Le calcul",
+  formula: "appels par jour × minutes par appel × part confiée",
+  empty: "Renseignez vos trois chiffres pour voir l'estimation.",
+  resultLabel: "Temps de secrétariat concerné, par jour",
+  disclaimer: "Estimation indicative à partir de vos propres chiffres, pas une promesse de résultat.",
+};
