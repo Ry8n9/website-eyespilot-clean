@@ -17,11 +17,11 @@ describe("EyesPilot Landing Page", () => {
 
   it("renders all section headings", () => {
     render(<Index />);
-    expect(screen.getByText(/ces situations vous parlent/i)).toBeInTheDocument();
+    expect(screen.getByText(/Les problématiques principales de votre cabinet/i)).toBeInTheDocument();
     expect(screen.getByText(/Trois briques/i)).toBeInTheDocument();
-    expect(screen.getByText(/De l.appel au premier avis/i)).toBeInTheDocument();
+    expect(screen.getByText(/Comment procède-t-on/i)).toBeInTheDocument();
     expect(screen.getByText(/on prend ça au sérieux/i)).toBeInTheDocument();
-    expect(screen.getByText(/10 cabinets pilotes/i)).toBeInTheDocument();
+    expect(screen.getByText(/Testez EyesPilot pendant 30 jours/i)).toBeInTheDocument();
     expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
   });
 
