@@ -240,12 +240,12 @@ const ProblemSection = () => (
           {
             emoji: "💸",
             title: "Les rendez-vous non honorés",
-            text: "Sans rappel automatique, un client sur dix ne se présente pas. Chaque créneau raté représente un manque à gagner direct — et un agenda difficile à réoptimiser en urgence.",
+            text: "Sans rappel automatique, un patient sur dix ne se présente pas. Chaque créneau raté représente un manque à gagner direct — et un agenda difficile à réoptimiser en urgence.",
           },
           {
             emoji: "⭐",
             title: "Trop peu d'avis Google",
-            text: "Vos clients sont satisfaits mais ne pensent pas à laisser un avis. Pendant ce temps, la concurrence creuse l'écart sur Google. Une relance bien placée changerait tout.",
+            text: "Vos patients sont satisfaits mais ne pensent pas à laisser un avis. Pendant ce temps, la concurrence creuse l'écart sur Google. Une relance bien placée changerait tout.",
           },
         ].map((item) => (
           <div key={item.title} className="bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-md hover:-translate-y-1 transition-all duration-300">
@@ -281,12 +281,12 @@ const SolutionSection = () => (
           {
             icon: <MessageSquare className="h-7 w-7 text-primary-foreground" />,
             title: "Moins d'appels pour votre secrétariat",
-            text: "Un rappel SMS la veille du RDV, avec tout ce dont le client a besoin. Résultat : moins d'appels de confirmation, moins de no-shows, un standard qui se libère.",
+            text: "Un rappel SMS la veille du RDV, avec tout ce dont le patient a besoin. Résultat : moins d'appels de confirmation, moins de no-shows, un standard qui se libère.",
           },
           {
             icon: <Star className="h-7 w-7 text-primary-foreground" />,
             title: "Collecte d'avis Google",
-            text: "Après chaque consultation, un message invite votre client à laisser un avis en un clic. Les étoiles s'accumulent sans que votre équipe n'ait à relancer.",
+            text: "Après chaque consultation, un message invite votre patient à laisser un avis en un clic. Les étoiles s'accumulent sans que votre équipe n'ait à relancer.",
           },
           {
             icon: <ClipboardList className="h-7 w-7 text-primary-foreground" />,
@@ -375,7 +375,7 @@ const TrustSection = () => (
           </div>
           <div>
             <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">
-              Données clients : on prend ça au sérieux
+              Données patients : on prend ça au sérieux
             </h2>
           </div>
         </div>
@@ -479,7 +479,7 @@ const FAQSection = () => {
       a: "Presque rien. Une formation de 15 minutes suffit à la mise en route, et le système tourne ensuite de façon autonome. Pas de nouvelle interface à apprendre, pas de procédure à changer.",
     },
     {
-      q: "Comment sont gérées les données des clients ?",
+      q: "Comment sont gérées les données des patients ?",
       a: `Nous limitons les données au strict nécessaire. Pour le détail de notre traitement des données, contactez-nous : ${CONTACT_EMAIL}.`,
     },
     {
