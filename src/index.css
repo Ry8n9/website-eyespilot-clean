@@ -37,8 +37,15 @@
     --radius: 0.75rem;
 
     --hero-gradient: linear-gradient(135deg, hsl(240 76% 50%) 0%, hsl(240 76% 40%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(240 76% 50%) 0%, hsl(255 70% 55%) 100%);
     --card-blue-bg: 230 60% 97%;
+    --card-blue-border: 230 60% 92%;
+
+    /* Fond de la carte sombre d'appel à l'action */
+    --ink: 222 47% 11%;
+    --ink-deep: 222 47% 7%;
+
+    /* Hauteur réservée à la navbar fixe pour les ancres */
+    --nav-offset: 6rem;
 
     --font-heading: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -66,6 +73,33 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    text-wrap: balance;
+  }
+
+  [id] {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -74,20 +108,15 @@
     background: var(--hero-gradient);
   }
 
-  .accent-gradient {
-    background: var(--accent-gradient);
-  }
-
-  .text-gradient {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   .card-blue {
     background: hsl(var(--card-blue-bg));
-    border: 1px solid hsl(230 60% 92%);
+    border: 1px solid hsl(var(--card-blue-border));
+  }
+
+  .ink-card {
+    background:
+      radial-gradient(ellipse at top, hsl(var(--primary) / 0.35), transparent 60%),
+      linear-gradient(180deg, hsl(var(--ink)) 0%, hsl(var(--ink-deep)) 100%);
   }
 
   .navbar-glass {
