@@ -112,3 +112,23 @@ export const callExample = {
     transcriptLabel: "Transcription",
   },
 };
+
+export const problem = {
+  eyebrow: "Le problème",
+  title: "Ce qui interrompt votre journée.",
+  lead: "Rien d'exceptionnel. Justement : ces appels reviennent tous les jours.",
+  situations: [
+    {
+      title: "En pleine consultation, le téléphone sonne.",
+      text: "Le patient en face de vous attend. Au bout du fil, une question sur les horaires ou les documents à apporter.",
+    },
+    {
+      title: "Le secrétariat est déjà en ligne.",
+      text: "L'appel suivant sonne dans le vide. Le patient rappellera plus tard, ou prendra rendez-vous ailleurs.",
+    },
+    {
+      title: "Encore une demande d'ordonnance.",
+      text: "Lunettes, lentilles : la demande est simple, mais elle occupe un appel entier et une note à retranscrire.",
+    },
+  ],
+};

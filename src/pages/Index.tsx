@@ -12,6 +12,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { MobileCallBar } from "@/components/sections/MobileCallBar";
 import { Hero } from "@/components/sections/Hero";
 import { CallExample } from "@/components/sections/CallExample";
+import { Problem } from "@/components/sections/Problem";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -19,48 +20,6 @@ const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  Problème                                                                   */
-/* -------------------------------------------------------------------------- */
-
-const ProblemSection = () => (
-  <section id="probleme" className="py-16 md:py-24 px-4 bg-background">
-    <div className="container max-w-5xl mx-auto">
-      <div className="card-blue rounded-2xl p-8 md:p-12 mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading">
-          Les problématiques principales de votre cabinet :
-        </h2>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          {
-            emoji: "📞",
-            title: "Le téléphone sonne en boucle",
-            text: "Horaires, documents à apporter, renouvellements : les mêmes questions reviennent chaque jour. Votre secrétariat perd un temps précieux sur des appels qui pourraient être automatisés.",
-          },
-          {
-            emoji: "💸",
-            title: "Les rendez-vous non honorés",
-            text: "Sans rappel automatique, un patient sur dix ne se présente pas. Chaque créneau raté représente un manque à gagner direct — et un agenda difficile à réoptimiser en urgence.",
-          },
-          {
-            emoji: "⭐",
-            title: "Trop peu d'avis Google",
-            text: "Vos patients sont satisfaits mais ne pensent pas à laisser un avis. Pendant ce temps, la concurrence creuse l'écart sur Google. Une relance bien placée changerait tout.",
-          },
-        ].map((item) => (
-          <div key={item.title} className="bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-            <div className="text-4xl mb-4">{item.emoji}</div>
-            <h3 className="text-lg font-bold text-foreground mb-2 font-heading">{item.title}</h3>
-            <p className="text-muted-foreground text-sm font-body">{item.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
 /* -------------------------------------------------------------------------- */
 /*  Méthode                                                                    */
@@ -338,7 +297,7 @@ const EyesPilotLanding = () => (
     <MobileCallBar />
     <Hero />
     <CallExample audio={FLAGS.SHOW_DEMO_AUDIO ? DONNEES_VALIDEES.demoAudio : null} />
-    <ProblemSection />
+    <Problem />
     <StepsSection />
     <TrustSection />
     <BetaSection />
