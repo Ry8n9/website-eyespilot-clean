@@ -198,3 +198,37 @@ export const proof = {
   metricSourcePrefix: "Source :",
   callLogTitle: "Extrait du journal d'appels, anonymisé",
 };
+
+export const processSteps = {
+  eyebrow: "Comment ça se passe",
+  title: "De votre premier appel à votre décision.",
+  lead: "Quatre étapes. À chacune, vous savez ce que deviennent vos appels et ce que l'on attend de vous.",
+  callsLabel: "Vos appels",
+  yourPartLabel: "Votre part",
+  steps: [
+    {
+      title: "Appel de cadrage",
+      text: "Nous écoutons comment votre cabinet reçoit ses appels aujourd'hui et quelles demandes reviennent.",
+      calls: "Rien ne change encore.",
+      yourPart: "Un appel avec nous.",
+    },
+    {
+      title: "Paramétrage avec vous",
+      text: "Nous préparons l'assistant avec vos motifs d'appel et vos consignes. Vous rédigez et validez la règle d'urgence.",
+      calls: "L'assistant apprend votre cabinet.",
+      yourPart: "Relire et valider la règle d'urgence.",
+    },
+    {
+      title: "Période pilote",
+      text: "L'assistant décroche pour de vrai. Votre secrétariat reçoit les fiches, nous ajustons le paramétrage avec vous.",
+      calls: "L'assistant décroche, le secrétariat reçoit les fiches.",
+      yourPart: "Nous signaler ce qui doit changer.",
+    },
+    {
+      title: "Bilan et décision",
+      text: "Nous regardons ensemble les appels traités et les fiches transmises. Vous décidez de la suite.",
+      calls: "Vous choisissez : continuer ou arrêter.",
+      yourPart: "Décider.",
+    },
+  ],
+};

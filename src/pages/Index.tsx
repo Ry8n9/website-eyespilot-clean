@@ -16,6 +16,7 @@ import { Problem } from "@/components/sections/Problem";
 import { Simulator } from "@/components/sections/Simulator";
 import { Comparison } from "@/components/sections/Comparison";
 import { Proof } from "@/components/sections/Proof";
+import { Process } from "@/components/sections/Process";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -23,51 +24,6 @@ const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  Méthode                                                                    */
-/* -------------------------------------------------------------------------- */
-
-const StepsSection = () => (
-  <section id="methode" className="py-16 md:py-24 px-4 bg-background">
-    <div className="container max-w-5xl mx-auto">
-      <div className="text-center mb-12">
-        <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-2">Notre démarche</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading">
-          Comment procède-t-on ?
-        </h2>
-      </div>
-
-      <div className="space-y-6">
-        {[
-          {
-            step: "01",
-            title: "Un appel de 15 minutes",
-            text: "On fait le point sur votre volume d'appels, votre agenda et vos besoins. Sans engagement, sans discours commercial.",
-          },
-          {
-            step: "02",
-            title: "Installation en 48 heures",
-            text: "On configure le système de A à Z. Formation de votre secrétariat en 15 minutes. Vous ne touchez à rien, ça tourne.",
-          },
-          {
-            step: "03",
-            title: "Bilan chiffré à J+30",
-            text: "Appels évités, avis collectés, temps récupéré : on vous présente les résultats. Si ça ne convient pas, on désinstalle sans frais.",
-          },
-        ].map((item) => (
-          <div key={item.step} className="card-blue rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-8 items-start">
-            <span className="text-3xl md:text-4xl font-extrabold text-primary/20 font-heading shrink-0">{item.step}.</span>
-            <div>
-              <h3 className="text-lg font-bold text-foreground mb-1 font-heading">{item.title}</h3>
-              <p className="text-muted-foreground text-sm font-body">{item.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
 /* -------------------------------------------------------------------------- */
 /*  Confiance                                                                  */
@@ -304,7 +260,7 @@ const EyesPilotLanding = () => (
     {FLAGS.SHOW_SIMULATOR && <Simulator />}
     <Comparison />
     {FLAGS.SHOW_PROOF && <Proof data={DONNEES_VALIDEES.proof} />}
-    <StepsSection />
+    <Process />
     <TrustSection />
     <BetaSection />
     <FAQSection />

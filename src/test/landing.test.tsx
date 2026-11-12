@@ -25,7 +25,7 @@ describe("EyesPilot Landing Page", () => {
     render(<Index />);
     expect(screen.getByRole("heading", { name: "Ce qui interrompt votre journée." })).toBeInTheDocument();
     expect(screen.getByRole("table", { name: /Comparaison qualitative/ })).toBeInTheDocument();
-    expect(screen.getByText(/Comment procède-t-on/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "De votre premier appel à votre décision." })).toBeInTheDocument();
     expect(screen.getByText(/on prend ça au sérieux/i)).toBeInTheDocument();
     expect(screen.getByText(/Testez EyesPilot pendant 30 jours/i)).toBeInTheDocument();
     expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
