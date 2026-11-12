@@ -3,8 +3,6 @@ import {
   Phone,
   Mail,
   ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
 } from "lucide-react";
 import { useState } from "react";
 import { EyesPilotLogo } from "@/components/brand/EyesPilotLogo";
@@ -19,6 +17,7 @@ import { Proof } from "@/components/sections/Proof";
 import { Process } from "@/components/sections/Process";
 import { Offers } from "@/components/sections/Offers";
 import { Fit } from "@/components/sections/Fit";
+import { PatientData } from "@/components/sections/PatientData";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -26,44 +25,6 @@ const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  Confiance                                                                  */
-/* -------------------------------------------------------------------------- */
-
-const TrustSection = () => (
-  <section className="py-12 md:py-16 px-4 bg-background">
-    <div className="container max-w-5xl mx-auto">
-      <div className="bg-card border border-border rounded-2xl p-8 md:p-10">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <ShieldCheck className="h-6 w-6 text-primary" />
-          </div>
-          <div>
-            <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">
-              Données patients : on prend ça au sérieux
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4 text-sm">
-          <div className="flex items-start gap-2">
-            <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <p className="text-muted-foreground font-body">
-              Nous limitons les données au strict nécessaire (nom, téléphone, horaire du rendez-vous).
-            </p>
-          </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <p className="text-muted-foreground font-body">
-              Les messages envoyés aux patients sont clairement identifiés comme automatiques, et un humain du cabinet reste joignable.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
 
 /* -------------------------------------------------------------------------- */
 /*  FAQ                                                                        */
@@ -203,7 +164,7 @@ const EyesPilotLanding = () => (
       riskReversal={FLAGS.SHOW_GUARANTEE ? DONNEES_VALIDEES.riskReversal : null}
     />
     <Fit />
-    <TrustSection />
+    <PatientData />
     <FAQSection />
     <CTASection />
     <Footer />

@@ -268,3 +268,18 @@ export const fit = {
     ],
   },
 };
+
+export const patientData = {
+  eyebrow: "Données patients",
+  title: "Deux engagements, sans jargon.",
+  commitments: [
+    {
+      title: "Le strict nécessaire",
+      text: "Nous limitons les données des patients à ce qui est nécessaire pour traiter leur demande.",
+    },
+    {
+      title: "Des messages identifiés, un humain joignable",
+      text: "Les messages envoyés aux patients sont identifiés comme automatiques, et une personne du cabinet reste joignable.",
+    },
+  ],
+};
