@@ -576,11 +576,8 @@ const Footer = () => (
   <footer className="py-8 px-4 border-t border-border">
     <div className="container max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground font-body">
       <p>© {new Date().getFullYear()} EyesPilot — Tous droits réservés.</p>
-      <div className="flex items-center gap-4">
-        <a href="/mentions-legales" className="hover:text-primary transition-colors">Mentions légales</a>
-        <a href="/confidentialite" className="hover:text-primary transition-colors">Confidentialité</a>
-        <a href="/cgu" className="hover:text-primary transition-colors">CGU</a>
-      </div>
+      {/* Liens Mentions légales / Confidentialité / CGU retirés provisoirement :
+          à rétablir quand les pages légales seront créées (étape 2). */}
     </div>
   </footer>
 );
