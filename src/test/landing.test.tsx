@@ -29,7 +29,7 @@ describe("EyesPilot Landing Page", () => {
     expect(screen.getByRole("heading", { name: "Deux engagements, sans jargon." })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Une offre complète, ou l'assistant seul." })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Pas adapté si/ })).toBeInTheDocument();
-    expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Les questions que vous vous posez." })).toBeInTheDocument();
   });
 
   it("all primary CTA links open Calendly in a new tab with an utm source", () => {
@@ -51,7 +51,7 @@ describe("EyesPilot Landing Page", () => {
       .getAllByRole("button")
       .filter((btn) => btn.hasAttribute("aria-expanded"));
 
-    expect(faqButtons).toHaveLength(6);
+    expect(faqButtons).toHaveLength(8);
     expect(faqButtons[0]).toHaveAttribute("aria-expanded", "true");
     expect(faqButtons[1]).toHaveAttribute("aria-expanded", "false");
 
@@ -60,6 +60,13 @@ describe("EyesPilot Landing Page", () => {
 
     fireEvent.click(faqButtons[2]);
     expect(faqButtons[2]).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("FAQ Doctolib answer makes no integration claim", () => {
+    render(<Index />);
+    expect(
+      screen.getByText("Le patient reçoit par SMS le lien de prise de rendez-vous du cabinet."),
+    ).toBeInTheDocument();
   });
 
   it("displays contact email and phone", () => {

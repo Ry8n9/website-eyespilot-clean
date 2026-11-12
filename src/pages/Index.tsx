@@ -4,7 +4,6 @@ import {
   Mail,
   ArrowRight,
 } from "lucide-react";
-import { useState } from "react";
 import { EyesPilotLogo } from "@/components/brand/EyesPilotLogo";
 import { Navbar } from "@/components/sections/Navbar";
 import { MobileCallBar } from "@/components/sections/MobileCallBar";
@@ -19,6 +18,7 @@ import { Offers } from "@/components/sections/Offers";
 import { Fit } from "@/components/sections/Fit";
 import { PatientData } from "@/components/sections/PatientData";
 import { Team } from "@/components/sections/Team";
+import { Faq } from "@/components/sections/Faq";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -26,76 +26,6 @@ const CALENDLY_URL = calendlyUrl("ancienne-section");
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  FAQ                                                                        */
-/* -------------------------------------------------------------------------- */
-
-const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      q: "Que doit faire mon secrétariat ?",
-      a: "Presque rien. Une formation de 15 minutes suffit à la mise en route, et le système tourne ensuite de façon autonome. Pas de nouvelle interface à apprendre, pas de procédure à changer.",
-    },
-    {
-      q: "Comment sont gérées les données des patients ?",
-      a: `Nous limitons les données au strict nécessaire. Pour le détail de notre traitement des données, contactez-nous : ${CONTACT_EMAIL}.`,
-    },
-    {
-      q: "Combien de temps dure l'installation ?",
-      a: "48 heures à compter de notre premier appel. Les rappels SMS partent dès le lendemain, et les premiers avis Google apparaissent généralement entre 7 et 14 jours après le lancement.",
-    },
-    {
-      q: "Ça marche avec Doctolib ?",
-      a: "Oui. EyesPilot fonctionne avec votre prise de rendez-vous en ligne (Doctolib ou autre) : le patient reçoit le lien par SMS.",
-    },
-    {
-      q: "Y a-t-il un engagement ?",
-      a: "Non. L'essai de 30 jours est gratuit, sans CB. Si vous ne souhaitez pas continuer, on désinstalle et vous ne devez rien. Après la période pilote, l'abonnement est mensuel, résiliable à tout moment.",
-    },
-    {
-      q: "Quels sont les tarifs après la bêta ?",
-      a: "Le tarif mensuel est défini lors de l'appel, selon votre volume et votre configuration. Les cabinets pilotes bénéficient d'un tarif préférentiel verrouillé à vie. Aucun montant ne s'applique avant la fin des 30 jours d'essai.",
-    },
-  ];
-
-  return (
-    <section id="faq" className="py-16 md:py-24 px-4 bg-background">
-      <div className="container max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading">
-            Les questions qu'on nous pose
-          </h2>
-        </div>
-
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <div key={faq.q} className="bg-card rounded-2xl border border-border overflow-hidden transition-all">
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left"
-                aria-expanded={openIndex === i}
-              >
-                <h3 className="font-bold text-foreground font-heading pr-4">{faq.q}</h3>
-                <span
-                  className={`text-primary text-xl transition-transform duration-200 shrink-0 ${openIndex === i ? "rotate-45" : ""}`}
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </button>
-              <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-96 pb-5 px-5" : "max-h-0"}`}>
-                <p className="text-muted-foreground text-sm font-body leading-relaxed">{faq.a}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 /* -------------------------------------------------------------------------- */
 /*  CTA final                                                                  */
@@ -167,7 +97,7 @@ const EyesPilotLanding = () => (
     <Fit />
     <PatientData />
     {FLAGS.SHOW_TEAM && <Team members={DONNEES_VALIDEES.team} />}
-    <FAQSection />
+    <Faq />
     <CTASection />
     <Footer />
   </main>

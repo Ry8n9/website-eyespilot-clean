@@ -288,3 +288,43 @@ export const team = {
   eyebrow: "Équipe",
   title: "Les personnes que vous aurez au téléphone.",
 };
+
+export const faq = {
+  eyebrow: "Questions",
+  title: "Les questions que vous vous posez.",
+  lead: "Des réponses prudentes. Pour le reste, posez-les-nous pendant l'appel.",
+  items: [
+    {
+      q: "Et si l'assistant se trompe ?",
+      a: "Il ne pose aucun diagnostic et ne prend pas de décision médicale. Chaque appel se termine par une fiche écrite pour votre secrétariat, qui voit ce qui a été dit et peut recontacter le patient. Pendant la période pilote, nous relisons ces fiches avec vous et corrigeons le paramétrage.",
+    },
+    {
+      q: "Et les urgences ?",
+      a: "Avant la mise en service, vous rédigez et validez la règle d'urgence : les signes d'alerte et la consigne à donner au patient. L'assistant applique cette règle telle que vous l'avez validée.",
+    },
+    {
+      q: "Mes patients âgés ?",
+      a: "L'assistant annonce dès le début qu'il est une intelligence artificielle. Un patient qui préfère parler à une personne peut le dire : sa demande est transmise au secrétariat. Pendant la période pilote, les fiches vous montrent comment ces appels se passent.",
+    },
+    {
+      q: "Doctolib ?",
+      a: "Le patient reçoit par SMS le lien de prise de rendez-vous du cabinet.",
+    },
+    {
+      q: "Mes données ?",
+      a: "Nous limitons les données des patients au strict nécessaire. Les messages envoyés sont identifiés comme automatiques, et une personne du cabinet reste joignable. Pour toute question précise : contact@eyespilot.net.",
+    },
+    {
+      q: "Combien de temps cela me demande-t-il ?",
+      a: "Un appel de cadrage, puis un temps de paramétrage où vous validez la règle d'urgence. Pendant la période pilote, nous vous demandons de nous signaler ce qui doit changer. Ensuite, le bilan.",
+    },
+    {
+      q: "Et si ça ne me convient pas ?",
+      a: "Le bilan sert à cela : à la fin de la période pilote, vous décidez de continuer ou d'arrêter. Les conditions vous sont présentées pendant l'appel, avant tout engagement.",
+    },
+    {
+      q: "Pourquoi pas un secrétariat externalisé ?",
+      a: "C'est une option sérieuse. La différence : l'assistant est paramétré avec vous pour votre cabinet, applique la règle d'urgence que vous avez validée et laisse une fiche écrite à la fin de chaque appel. Le tableau de comparaison plus haut détaille les trois options.",
+    },
+  ],
+};
