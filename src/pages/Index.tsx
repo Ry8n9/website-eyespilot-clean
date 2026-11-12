@@ -8,166 +8,16 @@ import {
   Star,
   ClipboardList,
   ShieldCheck,
-  Menu,
-  X,
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import { EyesPilotLogo } from "@/components/brand/EyesPilotLogo";
+import { Navbar } from "@/components/sections/Navbar";
+import { MobileCallBar } from "@/components/sections/MobileCallBar";
 
 const CALENDLY_URL = "https://calendly.com/rayane-boukef-eyespilot/new-meeting";
 const CONTACT_EMAIL = "contact@eyespilot.net";
 const CONTACT_PHONE = "+33644832903";
 const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
-
-/* -------------------------------------------------------------------------- */
-/*  Logo                                                                       */
-/* -------------------------------------------------------------------------- */
-
-type LogoProps = {
-  size?: number;
-  interactive?: boolean;
-  className?: string;
-};
-
-const EyesPilotLogo = ({ size = 28, interactive = true, className = "" }: LogoProps) => {
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!interactive) return;
-
-    const onMove = (e: MouseEvent) => {
-      const svg = svgRef.current;
-      if (!svg) return;
-      const rect = svg.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = e.clientX - cx;
-      const dy = e.clientY - cy;
-      const dist = Math.hypot(dx, dy) || 1;
-      const maxShift = 6;
-      const factor = Math.min(dist / 300, 1);
-      setOffset({ x: (dx / dist) * maxShift * factor, y: (dy / dist) * maxShift * factor });
-    };
-
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, [interactive]);
-
-  return (
-    <svg
-      ref={svgRef}
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <ellipse
-        cx="24"
-        cy="24"
-        rx="22"
-        ry="13"
-        fill="hsl(var(--background))"
-        stroke="hsl(var(--primary))"
-        strokeWidth="2"
-      />
-      <g
-        style={{
-          transform: `translate(${offset.x}px, ${offset.y}px)`,
-          transition: "transform 120ms ease-out",
-        }}
-      >
-        <circle cx="24" cy="24" r="10" fill="hsl(var(--primary))" />
-        <g stroke="hsl(var(--primary-foreground))" strokeLinecap="round">
-          <circle cx="24" cy="24" r="7" fill="none" strokeWidth="1.4" opacity="0.9" />
-          <line x1="24" y1="24" x2="24" y2="17" strokeWidth="1.6" />
-          <line x1="24" y1="24" x2="30.06" y2="27.5" strokeWidth="1.6" />
-          <line x1="24" y1="24" x2="17.94" y2="27.5" strokeWidth="1.6" />
-        </g>
-        <circle cx="24" cy="24" r="2" fill="hsl(var(--primary-foreground))" />
-      </g>
-    </svg>
-  );
-};
-
-/* -------------------------------------------------------------------------- */
-/*  Navbar                                                                     */
-/* -------------------------------------------------------------------------- */
-
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const closeMobile = () => setMobileOpen(false);
-
-  return (
-    <>
-      <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full px-5 md:px-6 py-3 ${
-          scrolled ? "navbar-glass shadow-lg" : "bg-transparent"
-        }`}
-      >
-        <div className="flex items-center gap-6 md:gap-8">
-          <a
-            href="#"
-            className="flex items-center gap-2 text-xl font-extrabold text-primary font-heading tracking-tight"
-          >
-            <EyesPilotLogo size={26} />
-            EyesPilot
-          </a>
-
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-            <a href="#probleme" className="hover:text-primary transition-colors">Problèmes</a>
-            <a href="#solution" className="hover:text-primary transition-colors">Services</a>
-            <a href="#methode" className="hover:text-primary transition-colors">Démarche</a>
-            <a href="#tarifs" className="hover:text-primary transition-colors">Tarifs</a>
-            <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
-          </div>
-
-          <Button size="sm" className="rounded-full ml-2 hidden md:inline-flex" asChild>
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Réserver un appel
-            </a>
-          </Button>
-
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden p-1 text-primary"
-            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </nav>
-
-      {mobileOpen && (
-        <div className="fixed inset-0 top-20 z-40 md:hidden px-4">
-          <div className="navbar-glass rounded-2xl shadow-xl p-6 flex flex-col gap-4">
-            <a href="#probleme" onClick={closeMobile} className="text-base font-medium text-foreground py-2 border-b border-border">Problèmes</a>
-            <a href="#solution" onClick={closeMobile} className="text-base font-medium text-foreground py-2 border-b border-border">Services</a>
-            <a href="#methode" onClick={closeMobile} className="text-base font-medium text-foreground py-2 border-b border-border">Démarche</a>
-            <a href="#tarifs" onClick={closeMobile} className="text-base font-medium text-foreground py-2 border-b border-border">Tarifs</a>
-            <a href="#faq" onClick={closeMobile} className="text-base font-medium text-foreground py-2 border-b border-border">FAQ</a>
-            <Button className="rounded-full mt-2" asChild onClick={closeMobile}>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Réserver un appel <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </Button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
 
 /* -------------------------------------------------------------------------- */
 /*  Hero                                                                       */
@@ -587,8 +437,9 @@ const Footer = () => (
 /* -------------------------------------------------------------------------- */
 
 const EyesPilotLanding = () => (
-  <main className="overflow-x-hidden scroll-smooth">
+  <main className="overflow-x-hidden pb-24 md:pb-0">
     <Navbar />
+    <MobileCallBar />
     <HeroSection />
     <ProblemSection />
     <SolutionSection />

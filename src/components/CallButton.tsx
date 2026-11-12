@@ -12,6 +12,7 @@ type CallButtonProps = {
   tone?: "primary" | "light";
   className?: string;
   onClick?: () => void;
+  tabIndex?: number;
 };
 
 /** L'unique appel à l'action du site : réserver un appel (Calendly). */
@@ -22,6 +23,7 @@ export const CallButton = ({
   tone = "primary",
   className,
   onClick,
+  tabIndex,
 }: CallButtonProps) => (
   <Button
     asChild
@@ -34,7 +36,7 @@ export const CallButton = ({
       className,
     )}
   >
-    <a href={calendlyUrl(placement)} target="_blank" rel="noopener noreferrer" onClick={onClick}>
+    <a href={calendlyUrl(placement)} target="_blank" rel="noopener noreferrer" onClick={onClick} tabIndex={tabIndex}>
       {label}
       <span className="sr-only"> {common.newTab}</span>
       {size === "lg" && <ArrowRight className="h-5 w-5" aria-hidden="true" />}

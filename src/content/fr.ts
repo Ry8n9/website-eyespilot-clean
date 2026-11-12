@@ -14,3 +14,16 @@ export const common = {
   ctaLong: "Réserver un appel de 15 min",
   newTab: "(s'ouvre dans un nouvel onglet)",
 };
+
+export const nav = {
+  homeLabel: "EyesPilot, retour en haut de page",
+  links: [
+    { href: "#exemple-appel", label: "Exemple d'appel" },
+    { href: "#methode", label: "Méthode" },
+    { href: "#offres", label: "Offres" },
+    { href: "#faq", label: "Questions" },
+  ],
+  openMenu: "Ouvrir le menu",
+  closeMenu: "Fermer le menu",
+  mobileBarLabel: "Réserver un appel de 15 min",
+};

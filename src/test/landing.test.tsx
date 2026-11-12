@@ -37,7 +37,7 @@ describe("EyesPilot Landing Page", () => {
 
   it("FAQ first item is open by default, toggles on click", () => {
     render(<Index />);
-    const faqSection = document.querySelector("#faq")!;
+    const faqSection = document.querySelector("#faq") as HTMLElement;
     const faqButtons = within(faqSection)
       .getAllByRole("button")
       .filter((btn) => btn.hasAttribute("aria-expanded"));
