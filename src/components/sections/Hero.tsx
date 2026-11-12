@@ -9,7 +9,7 @@ export const Hero = () => (
     aria-labelledby="hero-titre"
     className="relative overflow-hidden px-4 pb-16 pt-32 md:pb-24 md:pt-44"
   >
-    <div className="container mx-auto grid max-w-6xl items-center gap-12 px-0 lg:grid-cols-[1.2fr_0.8fr]">
+    <div className="container mx-auto grid max-w-6xl items-center gap-12 px-0 lg:grid-cols-[1.45fr_0.55fr]">
       <div>
         <p className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary md:text-sm">
           {hero.eyebrow}
@@ -17,7 +17,7 @@ export const Hero = () => (
 
         <h1
           id="hero-titre"
-          className="font-heading text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+          className="font-heading text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-foreground sm:text-6xl lg:text-[4.1rem] xl:text-[4.5rem]"
         >
           {hero.titleLine1}
           <br />
@@ -41,7 +41,7 @@ export const Hero = () => (
       </div>
 
       <div className="relative hidden lg:block">
-        <Gaze className="mx-auto w-full max-w-[420px]" />
+        <Gaze className="mx-auto w-full max-w-[360px]" />
       </div>
     </div>
   </section>

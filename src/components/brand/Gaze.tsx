@@ -37,7 +37,7 @@ export const Gaze = ({ className = "" }: { className?: string }) => {
             transition: "transform 160ms ease-out",
           }}
         >
-          <g transform="translate(200 200) scale(6.2) translate(-24 -24)">
+          <g transform="translate(200 200) scale(5.6) translate(-24 -24)">
             <Iris />
           </g>
         </g>
@@ -49,7 +49,7 @@ export const Gaze = ({ className = "" }: { className?: string }) => {
         ry="88"
         fill="none"
         stroke="hsl(var(--primary))"
-        strokeWidth="4"
+        strokeWidth="3"
       />
     </svg>
   );
