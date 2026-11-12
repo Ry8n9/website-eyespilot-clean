@@ -14,6 +14,7 @@ import { Hero } from "@/components/sections/Hero";
 import { CallExample } from "@/components/sections/CallExample";
 import { Problem } from "@/components/sections/Problem";
 import { Simulator } from "@/components/sections/Simulator";
+import { Comparison } from "@/components/sections/Comparison";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -300,6 +301,7 @@ const EyesPilotLanding = () => (
     <CallExample audio={FLAGS.SHOW_DEMO_AUDIO ? DONNEES_VALIDEES.demoAudio : null} />
     <Problem />
     {FLAGS.SHOW_SIMULATOR && <Simulator />}
+    <Comparison />
     <StepsSection />
     <TrustSection />
     <BetaSection />

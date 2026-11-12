@@ -148,3 +148,46 @@ export const simulator = {
   resultLabel: "Temps de secrétariat concerné, par jour",
   disclaimer: "Estimation indicative à partir de vos propres chiffres, pas une promesse de résultat.",
 };
+
+export const comparison = {
+  eyebrow: "Comparer",
+  title: "Trois façons de gérer le téléphone.",
+  lead: "Sans prix ni promesse : ce qui change concrètement pour votre cabinet.",
+  caption: "Comparaison qualitative entre trois organisations du téléphone",
+  columns: ["Ne rien faire", "Secrétariat externalisé", "EyesPilot"],
+  criterionLabel: "Critère",
+  rows: [
+    {
+      criterion: "Connaît votre cabinet",
+      values: [
+        "Oui, c'est votre équipe",
+        "Selon les consignes transmises au prestataire",
+        "Paramétré avec vous : vos motifs d'appel, vos consignes",
+      ],
+    },
+    {
+      criterion: "Règle d'urgence validée par vous",
+      values: [
+        "Dépend de la personne qui décroche",
+        "Selon le protocole du prestataire",
+        "Rédigée et validée par vous avant la mise en service",
+      ],
+    },
+    {
+      criterion: "Trace de chaque appel",
+      values: [
+        "Notes prises entre deux patients",
+        "Selon le prestataire",
+        "Une fiche écrite pour le secrétariat à la fin de l'appel",
+      ],
+    },
+    {
+      criterion: "Mise à jour de vos horaires",
+      values: [
+        "Votre équipe les connaît",
+        "À transmettre au prestataire",
+        "Vous nous les transmettez, nous mettons l'assistant à jour",
+      ],
+    },
+  ],
+};
