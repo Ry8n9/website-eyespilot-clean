@@ -17,6 +17,7 @@ import { Simulator } from "@/components/sections/Simulator";
 import { Comparison } from "@/components/sections/Comparison";
 import { Proof } from "@/components/sections/Proof";
 import { Process } from "@/components/sections/Process";
+import { Offers } from "@/components/sections/Offers";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -57,73 +58,6 @@ const TrustSection = () => (
               Les messages envoyés aux patients sont clairement identifiés comme automatiques, et un humain du cabinet reste joignable.
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-/* -------------------------------------------------------------------------- */
-/*  Offre / Tarifs                                                             */
-/* -------------------------------------------------------------------------- */
-
-const BetaSection = () => (
-  <section id="tarifs" className="py-16 md:py-24 px-4 bg-background">
-    <div className="container max-w-3xl mx-auto">
-      <div
-        className="relative rounded-3xl p-8 md:p-14 text-center overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, hsl(var(--primary) / 0.35), transparent 60%), linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(222 47% 7%) 100%)",
-        }}
-      >
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-widest text-white">
-            Accès pilote — places limitées
-          </div>
-
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-            Testez EyesPilot pendant 30 jours, sans engagement.
-          </h2>
-          <p className="text-white/80 mb-8 font-body max-w-xl mx-auto">
-            La période pilote permet de mesurer l'impact concret sur votre cabinet avant tout engagement financier.
-            À l'issue des 30 jours, nous définissons ensemble les conditions de la collaboration — ou nous vous désinstallons tout, sans frais.
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto text-left">
-            {[
-              "30 jours offerts, sans CB",
-              "Installation complète incluse",
-              "Rappels, avis, formulaires — tout activé dès J+1",
-              "Sans engagement. On part si ça ne convient pas.",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-2">
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                <p className="text-sm font-medium font-heading text-white">{item}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-white/10 border border-white/20 rounded-2xl p-5 mb-8 max-w-sm mx-auto">
-            <p className="text-sm text-white/80 font-body leading-relaxed">
-              Le tarif mensuel est défini lors de l'appel, selon votre volume et votre configuration.
-              Les cabinets pilotes bénéficient d'un tarif préférentiel verrouillé à vie.
-            </p>
-          </div>
-
-          <Button
-            size="lg"
-            className="rounded-full text-base px-8 py-6 shadow-lg bg-white text-primary hover:bg-white/90"
-            asChild
-          >
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Candidater
-              <ArrowRight className="ml-1 h-5 w-5" />
-            </a>
-          </Button>
         </div>
       </div>
     </div>
@@ -261,8 +195,13 @@ const EyesPilotLanding = () => (
     <Comparison />
     {FLAGS.SHOW_PROOF && <Proof data={DONNEES_VALIDEES.proof} />}
     <Process />
+    <Offers
+      pack={DONNEES_VALIDEES.offers.pack}
+      voiceAgent={DONNEES_VALIDEES.offers.voiceAgent}
+      showPrices={FLAGS.SHOW_PRICES}
+      riskReversal={FLAGS.SHOW_GUARANTEE ? DONNEES_VALIDEES.riskReversal : null}
+    />
     <TrustSection />
-    <BetaSection />
     <FAQSection />
     <CTASection />
     <Footer />

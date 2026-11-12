@@ -27,13 +27,13 @@ describe("EyesPilot Landing Page", () => {
     expect(screen.getByRole("table", { name: /Comparaison qualitative/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "De votre premier appel à votre décision." })).toBeInTheDocument();
     expect(screen.getByText(/on prend ça au sérieux/i)).toBeInTheDocument();
-    expect(screen.getByText(/Testez EyesPilot pendant 30 jours/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Une offre complète, ou l'assistant seul." })).toBeInTheDocument();
     expect(screen.getByText(/Les questions qu.on nous pose/i)).toBeInTheDocument();
   });
 
   it("all primary CTA links open Calendly in a new tab with an utm source", () => {
     render(<Index />);
-    const ctaLinks = screen.getAllByRole("link", { name: /Réserver|Candidater/i });
+    const ctaLinks = screen.getAllByRole("link", { name: /Réserver/i });
     expect(ctaLinks.length).toBeGreaterThan(0);
     ctaLinks.forEach((link) => {
       expect(link).toHaveAttribute("target", "_blank");

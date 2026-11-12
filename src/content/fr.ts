@@ -232,3 +232,15 @@ export const processSteps = {
     },
   ],
 };
+
+export const offers = {
+  eyebrow: "Les offres",
+  title: "Une offre complète, ou l'assistant seul.",
+  lead: "Le tarif dépend de ce que vous choisissez. Nous le présentons pendant l'appel, avec ce qui est inclus.",
+  recommended: "Recommandé",
+  includesLabel: "Inclus",
+  priceOnCall: "Tarif présenté lors de l'appel",
+  packPitch: "Pour un cabinet qui veut tout regrouper : être trouvé en ligne, et ne plus laisser sonner le téléphone.",
+  voiceAgentPitch: "Vous avez déjà un site ? L'agent vocal existe aussi seul.",
+  riskTitle: "Votre risque",
+};
