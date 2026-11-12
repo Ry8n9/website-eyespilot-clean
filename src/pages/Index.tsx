@@ -18,6 +18,7 @@ import { Process } from "@/components/sections/Process";
 import { Offers } from "@/components/sections/Offers";
 import { Fit } from "@/components/sections/Fit";
 import { PatientData } from "@/components/sections/PatientData";
+import { Team } from "@/components/sections/Team";
 import { calendlyUrl, FLAGS } from "@/config";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
@@ -165,6 +166,7 @@ const EyesPilotLanding = () => (
     />
     <Fit />
     <PatientData />
+    {FLAGS.SHOW_TEAM && <Team members={DONNEES_VALIDEES.team} />}
     <FAQSection />
     <CTASection />
     <Footer />

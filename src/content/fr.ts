@@ -283,3 +283,8 @@ export const patientData = {
     },
   ],
 };
+
+export const team = {
+  eyebrow: "Équipe",
+  title: "Les personnes que vous aurez au téléphone.",
+};
