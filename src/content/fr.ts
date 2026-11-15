@@ -387,7 +387,7 @@ export const legalPages = {
         title: "Services tiers",
         paragraphs: [
           "Prise de rendez-vous : les boutons « Réserver un appel » ouvrent la page Calendly d'EyesPilot dans un nouvel onglet. Les informations que vous y saisissez sont recueillies par Calendly. Le lien indique à Calendly depuis quel endroit du site l'appel a été réservé.",
-          "Polices de caractères : les polices du site sont chargées depuis Google Fonts. À l'affichage de la page, votre navigateur contacte donc les serveurs de Google.",
+          "Polices de caractères : elles sont hébergées sur le site. Leur affichage ne fait appel à aucun service tiers.",
         ],
       },
     ],

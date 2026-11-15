@@ -51,14 +51,15 @@ describe("Confidentialité : la page décrit le code réel", () => {
     expect(code).not.toMatch(/<form|fetch\(|XMLHttpRequest|sendBeacon|axios/);
   });
 
-  it("les seuls tiers sont Calendly et Google Fonts", () => {
+  it("le seul tiers est Calendly (polices hébergées sur le site)", () => {
     const hosts = new Set(
       [...code.matchAll(/https?:\/\/([a-z0-9.-]+)/gi)].map((m) => m[1].toLowerCase()),
     );
     hosts.delete("www.w3.org");
     hosts.delete("schema.org");
     hosts.delete("www.eyespilot.net");
-    expect([...hosts].sort()).toEqual(["calendly.com", "fonts.googleapis.com", "fonts.gstatic.com"]);
+    expect([...hosts].sort()).toEqual(["calendly.com"]);
+    expect(code).not.toMatch(/fonts\.googleapis|fonts\.gstatic/);
   });
 });
 
@@ -76,7 +77,8 @@ describe("Page /confidentialite", () => {
     const page = within(screen.getByRole("main"));
     expect(page.getByRole("heading", { name: "Cookies et mesure d'audience" })).toBeInTheDocument();
     expect(page.getByText(/Calendly/)).toBeInTheDocument();
-    expect(page.getByText(/Google Fonts/)).toBeInTheDocument();
+    expect(page.queryByText(/Google/)).toBeNull();
+    expect(page.getByText(/hébergées sur le site/)).toBeInTheDocument();
     expect(page.queryByRole("heading", { name: "Responsable du site" })).toBeNull();
     expect(page.queryByRole("heading", { name: "Hébergement" })).toBeNull();
   });
