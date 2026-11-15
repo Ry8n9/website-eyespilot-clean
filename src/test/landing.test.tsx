@@ -69,6 +69,13 @@ describe("EyesPilot Landing Page", () => {
     ).toBeInTheDocument();
   });
 
+  it("keeps the footer outside of main", () => {
+    render(<Index />);
+    const footer = screen.getByRole("contentinfo");
+    expect(footer.closest("main")).toBeNull();
+    expect(screen.getByRole("main")).toBeInTheDocument();
+  });
+
   it("displays contact email and phone", () => {
     render(<Index />);
     expect(screen.getByText("contact@eyespilot.net")).toBeInTheDocument();

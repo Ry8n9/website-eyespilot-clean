@@ -23,29 +23,31 @@ import { DONNEES_VALIDEES } from "@/content/validated";
  * de src/config.ts et des données de src/content/validated.ts.
  */
 const EyesPilotLanding = () => (
-  <main className="overflow-x-hidden pb-24 md:pb-0">
-    <Navbar />
-    <MobileCallBar />
-    <Hero />
-    <CallExample audio={FLAGS.SHOW_DEMO_AUDIO ? DONNEES_VALIDEES.demoAudio : null} />
-    <Problem />
-    {FLAGS.SHOW_SIMULATOR && <Simulator />}
-    <Comparison />
-    {FLAGS.SHOW_PROOF && <Proof data={DONNEES_VALIDEES.proof} />}
-    <Process />
-    <Offers
-      pack={DONNEES_VALIDEES.offers.pack}
-      voiceAgent={DONNEES_VALIDEES.offers.voiceAgent}
-      showPrices={FLAGS.SHOW_PRICES}
-      riskReversal={FLAGS.SHOW_GUARANTEE ? DONNEES_VALIDEES.riskReversal : null}
-    />
-    <Fit />
-    <PatientData />
-    {FLAGS.SHOW_TEAM && <Team members={DONNEES_VALIDEES.team} />}
-    <Faq />
-    <FinalCta />
+  <div className="overflow-x-hidden pb-24 md:pb-0">
+    <main>
+      <Navbar />
+      <MobileCallBar />
+      <Hero />
+      <CallExample audio={FLAGS.SHOW_DEMO_AUDIO ? DONNEES_VALIDEES.demoAudio : null} />
+      <Problem />
+      {FLAGS.SHOW_SIMULATOR && <Simulator />}
+      <Comparison />
+      {FLAGS.SHOW_PROOF && <Proof data={DONNEES_VALIDEES.proof} />}
+      <Process />
+      <Offers
+        pack={DONNEES_VALIDEES.offers.pack}
+        voiceAgent={DONNEES_VALIDEES.offers.voiceAgent}
+        showPrices={FLAGS.SHOW_PRICES}
+        riskReversal={FLAGS.SHOW_GUARANTEE ? DONNEES_VALIDEES.riskReversal : null}
+      />
+      <Fit />
+      <PatientData />
+      {FLAGS.SHOW_TEAM && <Team members={DONNEES_VALIDEES.team} />}
+      <Faq />
+      <FinalCta />
+    </main>
     <Footer legalLinks={FLAGS.SHOW_LEGAL_LINKS ? DONNEES_VALIDEES.legalLinks : []} />
-  </main>
+  </div>
 );
 
 export default EyesPilotLanding;
