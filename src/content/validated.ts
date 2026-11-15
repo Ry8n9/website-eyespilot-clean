@@ -1,3 +1,5 @@
+import { CONTACT } from "@/config";
+
 /**
  * DONNEES_VALIDEES
  *
@@ -62,10 +64,15 @@ export type LegalInfo = {
   name: string | null;
   legalForm: string | null;
   siren: string | null;
+  siret: string | null;
   address: string | null;
+  /** Mention de TVA, reprise telle quelle. */
+  vatNotice: string | null;
   publicationDirector: string | null;
+  /** La section hébergement des mentions légales exige le nom ET l'adresse. */
   host: { name: string; address: string | null; contact: string | null } | null;
   email: string | null;
+  phone: string | null;
 };
 
 export const DONNEES_VALIDEES = {
@@ -133,11 +140,15 @@ export const DONNEES_VALIDEES = {
 };
 
 export const LEGAL: LegalInfo = {
-  name: null,
-  legalForm: null,
-  siren: null,
-  address: null,
-  publicationDirector: null,
-  host: null,
-  email: null,
+  name: "EyesPilot, exploité par Rayane Boukef",
+  legalForm: "Entrepreneur individuel",
+  siren: "941 992 281",
+  siret: "941 992 281 00027",
+  address: "18 rue Frédéric Mistral Prolongée, 94320 Thiais",
+  vatNotice: "TVA non applicable, art. 293 B du CGI",
+  publicationDirector: "Rayane Boukef",
+  // Adresse de l'hébergeur à confirmer : la section reste masquée d'ici là.
+  host: { name: "Vercel Inc.", address: null, contact: null },
+  email: CONTACT.email,
+  phone: CONTACT.phoneDisplay,
 };

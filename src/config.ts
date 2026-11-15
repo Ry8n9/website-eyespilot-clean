@@ -18,7 +18,7 @@ export const FLAGS = {
   /** Bloc « Votre risque » sous les offres. */
   SHOW_GUARANTEE: false,
   /** Liens vers les pages légales dans le pied de page. */
-  SHOW_LEGAL_LINKS: false,
+  SHOW_LEGAL_LINKS: true,
   /** Simulateur de temps de secrétariat. */
   SHOW_SIMULATOR: true,
 } as const;

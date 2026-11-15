@@ -30,6 +30,9 @@ const EMPTY: LegalInfo = {
   name: null,
   legalForm: null,
   siren: null,
+  siret: null,
+  vatNotice: null,
+  phone: null,
   address: null,
   publicationDirector: null,
   host: null,
@@ -66,10 +69,16 @@ describe("Confidentialité : la page décrit le code réel", () => {
 describe("Page /confidentialite", () => {
   beforeEach(() => window.history.pushState({}, "", "/"));
 
-  it("n'est pas accessible tant que le bloc LEGAL est vide", () => {
+  it("s'affiche avec le responsable, Calendly et l'hébergeur (journaux de connexion)", () => {
     window.history.pushState({}, "", "/confidentialite");
     render(<App />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("404");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Confidentialité");
+    const page = within(screen.getByRole("main"));
+    expect(page.getByRole("heading", { name: "Responsable du site" })).toBeInTheDocument();
+    expect(page.getByText(/Calendly/)).toBeInTheDocument();
+    expect(page.getByText("Vercel Inc.")).toBeInTheDocument();
+    expect(page.getByText(/journaux de connexion/)).toBeInTheDocument();
+    expect(page.queryByText(/\.\./)).toBeNull();
   });
 
   it("décrit les faits vérifiés et masque le responsable sans données", () => {
@@ -84,7 +93,7 @@ describe("Page /confidentialite", () => {
   });
 
   it("le lien du pied de page n'apparaît qu'avec le drapeau et des données", () => {
-    expect(footerLegalLinks(LEGAL)).toEqual([]);
+    expect(footerLegalLinks(LEGAL).map((l) => l.href)).toEqual(["/mentions-legales", "/confidentialite"]);
     const links = footerLegalLinks({ ...EMPTY, name: "Test" }, true).map((l) => l.href);
     expect(links).toContain("/confidentialite");
   });

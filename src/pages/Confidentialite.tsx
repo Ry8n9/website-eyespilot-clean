@@ -32,8 +32,10 @@ const Confidentialite = ({ legal }: { legal: LegalInfo }) => {
       {legal.host?.name.trim() && (
         <LegalSection title={t.host.title}>
           <p>
-            {t.host.intro} <span className="text-foreground">{legal.host.name}</span>.
+            {t.host.intro} <span className="text-foreground">{legal.host.name}</span>
+            {legal.host.name.trim().endsWith(".") ? "" : "."}
           </p>
+          <p>{t.host.logs}</p>
         </LegalSection>
       )}
     </LegalLayout>

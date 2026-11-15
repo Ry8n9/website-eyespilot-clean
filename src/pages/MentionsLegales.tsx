@@ -13,9 +13,16 @@ const MentionsLegales = ({ legal }: { legal: LegalInfo }) => {
     { label: t.publisher.name, value: legal.name },
     { label: t.publisher.legalForm, value: legal.legalForm },
     { label: t.publisher.siren, value: legal.siren },
+    { label: t.publisher.siret, value: legal.siret },
     { label: t.publisher.address, value: legal.address },
+    { label: t.publisher.vat, value: legal.vatNotice },
   ]);
-  const host = legal.host
+  const contact = filledRows([
+    { label: t.contact.email, value: legal.email },
+    { label: t.contact.phone, value: legal.phone },
+  ]);
+  // Hébergement : section affichée seulement si le nom ET l'adresse sont fournis.
+  const host = legal.host?.name.trim() && legal.host.address?.trim()
     ? filledRows([
         { label: t.host.name, value: legal.host.name },
         { label: t.host.address, value: legal.host.address },
@@ -42,14 +49,10 @@ const MentionsLegales = ({ legal }: { legal: LegalInfo }) => {
           <LegalRows rows={host} />
         </LegalSection>
       )}
-      {legal.email?.trim() && (
+      {contact.length > 0 && (
         <LegalSection title={t.contact.title}>
           <p>{t.contact.intro}</p>
-          <p>
-            <a href={`mailto:${legal.email}`} className="font-medium text-primary underline underline-offset-4">
-              {legal.email}
-            </a>
-          </p>
+          <LegalRows rows={contact} />
         </LegalSection>
       )}
     </LegalLayout>

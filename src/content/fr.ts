@@ -366,7 +366,9 @@ export const legalPages = {
       name: "Raison sociale ou nom",
       legalForm: "Forme juridique",
       siren: "SIREN",
-      address: "Adresse",
+      siret: "SIRET",
+      address: "Adresse du siège",
+      vat: "TVA",
     },
     director: { title: "Directeur de la publication" },
     host: {
@@ -376,7 +378,7 @@ export const legalPages = {
       address: "Adresse",
       contact: "Contact",
     },
-    contact: { title: "Contact", intro: "Pour toute question concernant le site :" },
+    contact: { title: "Contact", intro: "Pour toute question concernant le site :", email: "E-mail", phone: "Téléphone" },
   },
   privacy: {
     title: "Confidentialité",
@@ -404,7 +406,11 @@ export const legalPages = {
         ],
       },
     ],
-    host: { title: "Hébergement", intro: "Le site est hébergé par" },
+    host: {
+      title: "Hébergement",
+      intro: "Le site est hébergé par",
+      logs: "Comme tout hébergeur, il peut enregistrer des journaux de connexion techniques (adresse IP, date et page demandée), nécessaires au fonctionnement et à la sécurité du service.",
+    },
   },
 };
 
