@@ -64,11 +64,14 @@ export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersPro
             </div>
             <CallButton placement="offre-pack" className="mt-6" />
           </div>
-          <div className="card-blue rounded-2xl p-6">
+          <div className="card-blue flex flex-col justify-center rounded-2xl p-6 lg:px-8">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{offers.includesLabel}</p>
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:mt-5 lg:grid-cols-1 lg:divide-y lg:divide-[hsl(var(--card-blue-border))] lg:gap-0">
               {pack.includes.map((item) => (
-                <li key={item} className="flex items-center gap-3 font-heading text-base font-bold text-foreground">
+                <li
+                  key={item}
+                  className="flex items-center gap-3 font-heading text-base font-bold text-foreground lg:py-4 lg:text-lg"
+                >
                   <FocalMark className="h-5 w-5" />
                   {item}
                 </li>
