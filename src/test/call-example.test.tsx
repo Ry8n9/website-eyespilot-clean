@@ -9,8 +9,9 @@ describe("Exemple d'appel", () => {
     const section = document.getElementById("exemple-appel") as HTMLElement;
     expect(section).toBeTruthy();
     expect(within(section).getByText(callExample.caption)).toBeInTheDocument();
-    expect(within(section).getByText(callExample.ticket.title)).toBeInTheDocument();
-    expect(within(section).getByText(callExample.sms.title)).toBeInTheDocument();
+    // Grand écran : colonne de droite ; mobile : en ligne dans la conversation.
+    expect(within(section).getAllByText(callExample.ticket.title)).toHaveLength(2);
+    expect(within(section).getAllByText(callExample.sms.title)).toHaveLength(2);
     expect(within(section).getAllByRole("listitem").length).toBeGreaterThanOrEqual(callExample.turns.length);
   });
 
@@ -88,5 +89,16 @@ describe("Appel joué tour par tour", () => {
   it("n'affiche aucune onde sonore sans audio", () => {
     const { container } = render(<CallExample audio={null} />);
     expect(container.querySelector("audio, canvas, [data-onde]")).toBeNull();
+  });
+});
+
+describe("Exemple d'appel sur mobile", () => {
+  it("place le SMS et la fiche juste après la réplique qui les déclenche", () => {
+    render(<CallExample audio={null} />);
+    const items = screen.getAllByRole("listitem").filter((li) => li.querySelector("p.rounded-2xl"));
+    const smsTurn = items[callExample.sms.after - 1];
+    const lastTurn = items[callExample.turns.length - 1];
+    expect(within(smsTurn).getByText(callExample.sms.title)).toBeInTheDocument();
+    expect(within(lastTurn).getByText(callExample.ticket.title)).toBeInTheDocument();
   });
 });

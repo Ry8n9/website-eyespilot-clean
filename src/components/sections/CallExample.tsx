@@ -13,7 +13,13 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 const TURN_MS = 1500;
+const ROW_MS = 350;
 const TOTAL = callExample.turns.length;
+const ROWS = callExample.ticket.rows.length;
+/** Après la dernière réplique, la fiche en ligne (mobile) se remplit ligne par ligne. */
+const END = TOTAL + ROWS;
+const SMS_TURN = callExample.sms.after - 1;
+const TICKET_TURN = TOTAL - 1;
 
 /** Nombre de lignes de la fiche remplies après `step` répliques. */
 const filledRows = (step: number) => callExample.ticket.rows.filter((r) => r.after <= step).length;
@@ -32,12 +38,14 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
   const [run, setRun] = useState(0);
 
   const animated = !reduced;
-  const shown = animated ? step : TOTAL;
+  const shown = animated ? Math.min(step, TOTAL) : TOTAL;
+  /** Lignes remplies de la fiche en ligne (mobile), après la dernière réplique. */
+  const inlineFilled = animated ? Math.max(0, Math.min(step - TOTAL, ROWS)) : ROWS;
 
   useEffect(() => {
     if (!animated || !inView) return;
-    if (step >= TOTAL) return;
-    const t = window.setTimeout(() => setStep((s) => Math.min(s + 1, TOTAL)), TURN_MS);
+    if (step >= END) return;
+    const t = window.setTimeout(() => setStep((s) => Math.min(s + 1, END)), step < TOTAL ? TURN_MS : ROW_MS);
     return () => window.clearTimeout(t);
   }, [animated, inView, step, run]);
 
@@ -130,6 +138,35 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
                           >
                             {turn.text}
                           </p>
+                          {/* Mobile et tablette : ce que la réplique déclenche, en ligne */}
+                          {i === SMS_TURN && (
+                            <div className="mt-4 lg:hidden">
+                              <p className="mb-2 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
+                                <FocalMark className="h-4 w-4" />
+                                {callExample.sms.title}
+                              </p>
+                              <SmsPhone
+                                className="mx-auto w-full max-w-[240px]"
+                                sender={callExample.sms.sender}
+                                text={callExample.sms.text}
+                                linkLabel={callExample.sms.linkLabel}
+                                received={smsSent}
+                              />
+                            </div>
+                          )}
+                          {i === TICKET_TURN && (
+                            <div className="mt-4 lg:hidden">
+                              <p className="mb-2 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
+                                <FocalMark className="h-4 w-4" />
+                                {callExample.ticket.title}
+                              </p>
+                              <TicketScreen
+                                title={mockScreens.ticket.title}
+                                rows={callExample.ticket.rows}
+                                filled={inlineFilled}
+                              />
+                            </div>
+                          )}
                         </div>
                         {note ? (
                           <aside className="flex gap-2.5 border-l-2 border-dashed border-primary/30 pl-3 md:mt-5">
@@ -149,7 +186,7 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
               </div>
 
               {/* Ce que l'appel produit, au fil de l'appel */}
-              <div className="space-y-6 bg-background/60 px-5 py-6 md:px-8 md:py-8 lg:px-6">
+              <div className="hidden space-y-6 bg-background/60 px-5 py-6 md:px-8 md:py-8 lg:block lg:px-6">
                 <div>
                   <p className="mb-3 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
                     <FocalMark className="h-4 w-4" />
