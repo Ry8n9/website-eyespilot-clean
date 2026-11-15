@@ -34,6 +34,7 @@ export const hero = {
   titleLine2: "Votre consultation continue.",
   lead: "L'assistant EyesPilot décroche, comprend la demande du patient et la transmet par écrit à votre secrétariat. Pour les urgences, il applique la règle que vous avez validée.",
   secondaryLink: "Voir un appel en vrai",
+  mockLabel: "Exemple, données fictives",
 };
 
 export const callExample = {
@@ -393,4 +394,19 @@ export const legalPages = {
     ],
     host: { title: "Hébergement", intro: "Le site est hébergé par" },
   },
+};
+
+/** Maquettes d'écrans (fiche secrétariat, SMS). Données fictives. */
+export const mockScreens = {
+  ticket: {
+    app: "Demandes du secrétariat",
+    day: "Aujourd'hui,",
+    time: "9 h 42",
+    kicker: "Nouvelle demande",
+    title: "Renouvellement d'ordonnance",
+    status: "À rappeler",
+    footer: "Fiche créée par l'assistant à la fin de l'appel",
+  },
+  sms: { channel: "SMS" },
+  heroRowLabels: ["Motif", "Patient", "Règle d'urgence", "Fait"],
 };

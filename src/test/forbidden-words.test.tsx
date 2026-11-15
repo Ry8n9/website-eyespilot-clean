@@ -56,11 +56,13 @@ describe("Mots interdits", () => {
     expect(indexHtml).not.toMatch(EMOJI);
   });
 
-  it("aucun chiffre affiché hors téléphone, durée de l'appel, année et simulateur", () => {
+  it("aucun chiffre affiché hors téléphone, durée de l'appel, année, simulateur et maquettes fictives", () => {
     const { container } = render(<Index />);
     // Le simulateur affiche ses bornes de saisie (« sur 10 », « de 0 à 10 ») :
     // ce ne sont pas des affirmations, il est donc exclu de ce contrôle.
     container.querySelector("#simulateur")?.remove();
+    // Les maquettes étiquetées « données fictives » portent un horodatage fictif.
+    container.querySelectorAll("[data-exemple]").forEach((el) => el.remove());
     const rest = (container.textContent ?? "")
       .replace(CONTACT.phoneDisplay, "")
       .replace(/15 min/g, "")
@@ -85,5 +87,14 @@ describe("Mots interdits", () => {
     render(<Index />);
     ["preuve", "equipe"].forEach((id) => expect(document.getElementById(id)).toBeNull());
     expect(document.querySelector("audio")).toBeNull();
+  });
+});
+
+describe("Maquettes fictives", () => {
+  it("chaque maquette avec horodatage est étiquetée comme fictive", () => {
+    const { container } = render(<Index />);
+    const mocks = container.querySelectorAll("[data-exemple]");
+    expect(mocks.length).toBeGreaterThan(0);
+    mocks.forEach((m) => expect(m.textContent).toMatch(/données fictives/i));
   });
 });
