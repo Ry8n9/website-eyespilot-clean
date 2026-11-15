@@ -1,5 +1,6 @@
 import { FocalMark } from "@/components/brand/FocalMark";
 import { SectionHeading } from "@/components/SectionHeading";
+import { CONTACT } from "@/config";
 import { patientData } from "@/content/fr";
 
 /**
@@ -9,7 +10,15 @@ import { patientData } from "@/content/fr";
 export const PatientData = () => (
   <section id="donnees" aria-labelledby="donnees-titre" className="border-y border-border bg-card px-4 py-10 lg:py-12">
     <div className="container mx-auto grid max-w-6xl items-start gap-8 px-0 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12">
-      <SectionHeading id="donnees-titre" eyebrow={patientData.eyebrow} title={patientData.title} size="compact" />
+      <div>
+        <SectionHeading id="donnees-titre" eyebrow={patientData.eyebrow} title={patientData.title} size="compact" />
+        <p className="mt-4 text-sm text-muted-foreground">
+          {patientData.contactIntro}{" "}
+          <a href={`mailto:${CONTACT.email}`} className="font-medium text-primary underline underline-offset-4">
+            {CONTACT.email}
+          </a>
+        </p>
+      </div>
       <ul className="grid gap-6 md:grid-cols-2 md:gap-10">
         {patientData.commitments.map((c) => (
           <li key={c.title} className="flex gap-4">

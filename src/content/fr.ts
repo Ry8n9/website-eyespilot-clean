@@ -232,7 +232,7 @@ export const processSteps = {
     {
       title: "Bilan et décision",
       text: "Nous regardons ensemble les appels traités et les fiches transmises. Vous décidez de la suite.",
-      calls: "Vous choisissez : continuer ou arrêter.",
+      calls: "Vous décidez de la suite avec nous.",
       yourPart: "Décider.",
     },
   ],
@@ -260,7 +260,7 @@ export const fit = {
       "Votre secrétariat est souvent déjà en ligne quand le téléphone sonne.",
       "Les mêmes demandes reviennent : horaires, documents, renouvellements d'ordonnance.",
       "Vous voulez fixer vous-même la conduite à tenir en cas d'urgence.",
-      "Votre cabinet propose déjà la prise de rendez-vous en ligne.",
+      "Votre cabinet propose déjà la prise de rendez-vous en ligne, ou souhaite la mettre en place avec nous.",
     ],
   },
   no: {
@@ -269,7 +269,6 @@ export const fit = {
       "Vous voulez que chaque appel, même simple, soit pris par une personne.",
       "Les urgences de votre cabinet doivent être traitées uniquement par un humain, dès le premier mot.",
       "Personne au cabinet ne peut relire les fiches transmises au secrétariat.",
-      "Votre cabinet ne propose pas de prise de rendez-vous en ligne : le lien envoyé par SMS perd son intérêt.",
     ],
   },
 };
@@ -287,6 +286,7 @@ export const patientData = {
       text: "Les messages envoyés aux patients sont identifiés comme automatiques, et une personne du cabinet reste joignable.",
     },
   ],
+  contactIntro: "Une question précise sur vos données :",
 };
 
 export const team = {
@@ -314,11 +314,7 @@ export const faq = {
     },
     {
       q: "Doctolib ?",
-      a: "Le patient reçoit par SMS le lien de prise de rendez-vous du cabinet.",
-    },
-    {
-      q: "Mes données ?",
-      a: "Nous limitons les données des patients au strict nécessaire. Les messages envoyés sont identifiés comme automatiques, et une personne du cabinet reste joignable. Pour toute question précise : contact@eyespilot.net.",
+      a: "Le patient reçoit par SMS le lien de prise de rendez-vous de votre cabinet. L'agenda peut être pris en charge dans le CRM EyesPilot, mis en place avec votre cabinet. L'assistant, lui, envoie le lien de prise de rendez-vous par SMS.",
     },
     {
       q: "Combien de temps cela me demande-t-il ?",
@@ -326,7 +322,7 @@ export const faq = {
     },
     {
       q: "Et si ça ne me convient pas ?",
-      a: "Le bilan sert à cela : à la fin de la période pilote, vous décidez de continuer ou d'arrêter. Les conditions vous sont présentées pendant l'appel, avant tout engagement.",
+      a: "Le bilan sert à cela : vous décidez ensemble de la suite. Les conditions, y compris la durée de l'accompagnement et les modalités de paiement, vous sont présentées pendant l'appel, avant tout engagement.",
     },
     {
       q: "Pourquoi pas un secrétariat externalisé ?",

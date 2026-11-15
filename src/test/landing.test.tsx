@@ -51,7 +51,7 @@ describe("EyesPilot Landing Page", () => {
       .getAllByRole("button")
       .filter((btn) => btn.hasAttribute("aria-expanded"));
 
-    expect(faqButtons).toHaveLength(8);
+    expect(faqButtons).toHaveLength(7);
     expect(faqButtons[0]).toHaveAttribute("aria-expanded", "true");
     expect(faqButtons[1]).toHaveAttribute("aria-expanded", "false");
 
@@ -62,11 +62,31 @@ describe("EyesPilot Landing Page", () => {
     expect(faqButtons[2]).toHaveAttribute("aria-expanded", "true");
   });
 
-  it("FAQ Doctolib answer makes no integration claim", () => {
+  it("FAQ Doctolib answer is the validated text, without integration claim", () => {
+    render(<Index />);
+    const answer = screen.getByText("Le patient reçoit par SMS le lien de prise de rendez-vous de votre cabinet. L'agenda peut être pris en charge dans le CRM EyesPilot, mis en place avec votre cabinet. L'assistant, lui, envoie le lien de prise de rendez-vous par SMS.");
+    expect(answer).toBeInTheDocument();
+    expect(answer.textContent).not.toMatch(/intégr|synchronis|connecté|compatible/i);
+  });
+
+  it("FAQ no longer duplicates the patient data section, which keeps the contact address", () => {
+    render(<Index />);
+    expect(screen.queryByRole("button", { name: "Mes données ?" })).toBeNull();
+    const data = document.getElementById("donnees") as HTMLElement;
+    expect(within(data).getByRole("link", { name: "contact@eyespilot.net" })).toHaveAttribute(
+      "href",
+      "mailto:contact@eyespilot.net",
+    );
+  });
+
+  it("Pour qui and Bilan use the updated wording", () => {
     render(<Index />);
     expect(
-      screen.getByText("Le patient reçoit par SMS le lien de prise de rendez-vous du cabinet."),
+      screen.getByText("Votre cabinet propose déjà la prise de rendez-vous en ligne, ou souhaite la mettre en place avec nous."),
     ).toBeInTheDocument();
+    expect(screen.queryByText(/le lien envoyé par SMS perd son intérêt/)).toBeNull();
+    expect(screen.getByText("Vous décidez de la suite avec nous.")).toBeInTheDocument();
+    expect(screen.queryByText(/continuer ou arrêter/)).toBeNull();
   });
 
   it("keeps the footer outside of main", () => {
@@ -76,10 +96,11 @@ describe("EyesPilot Landing Page", () => {
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 
-  it("displays contact email and phone", () => {
+  it("displays contact email and phone in the footer", () => {
     render(<Index />);
-    expect(screen.getByText("contact@eyespilot.net")).toBeInTheDocument();
-    expect(screen.getByText("06 44 83 29 03")).toBeInTheDocument();
+    const footer = within(screen.getByRole("contentinfo"));
+    expect(footer.getByText("contact@eyespilot.net")).toBeInTheDocument();
+    expect(footer.getByText("06 44 83 29 03")).toBeInTheDocument();
   });
 
   it("mobile menu button toggles aria-label and renders nav links", () => {
