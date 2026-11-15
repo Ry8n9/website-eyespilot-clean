@@ -177,6 +177,28 @@
     }
   }
 
+  /* Fond sombre pleine largeur (même encre que la carte d'appel final). */
+  .ink-band {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, hsl(var(--primary) / 0.28), transparent 70%),
+      linear-gradient(180deg, hsl(var(--ink)) 0%, hsl(var(--ink-deep)) 100%);
+    color: hsl(0 0% 100%);
+  }
+
+  /* Sur fond sombre, le focus indigo n'atteint pas 3:1 : il passe en blanc. */
+  .on-dark {
+    --ring: 0 0% 100%;
+  }
+  .on-dark :focus-visible {
+    outline-color: hsl(0 0% 100%);
+  }
+
+  /* Teinte bleutée pleine largeur, pour rythmer la page. */
+  .tint-band {
+    background: linear-gradient(180deg, hsl(var(--card-blue-bg)) 0%, hsl(230 50% 96%) 100%);
+    border-block: 1px solid hsl(var(--card-blue-border));
+  }
+
   /* Apparition progressive (Hero). Sans effet sous prefers-reduced-motion. */
   .rise {
     animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;

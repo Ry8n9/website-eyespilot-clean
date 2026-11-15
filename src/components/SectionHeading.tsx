@@ -8,6 +8,8 @@ type SectionHeadingProps = {
   lead?: ReactNode;
   align?: "left" | "center";
   tone?: "default" | "light";
+  /** "compact" : titre plus petit, pour un bandeau. */
+  size?: "default" | "compact";
   className?: string;
 };
 
@@ -19,6 +21,7 @@ export const SectionHeading = ({
   lead,
   align = "left",
   tone = "default",
+  size = "default",
   className,
 }: SectionHeadingProps) => (
   <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
@@ -35,7 +38,9 @@ export const SectionHeading = ({
     <h2
       id={id}
       className={cn(
-        "font-heading text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.08]",
+        size === "compact"
+          ? "font-heading text-2xl font-bold leading-tight md:text-3xl"
+          : "font-heading text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.08]",
         tone === "light" ? "text-white" : "text-foreground",
       )}
     >
