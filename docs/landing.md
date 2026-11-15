@@ -1,51 +1,67 @@
-# EyesPilot Landing Page
+# Page d'accueil EyesPilot
 
-Route: `/` → `App.tsx` → `src/pages/Index.tsx` (exports `EyesPilotLanding` as default)
+Route : `/` → `App.tsx` → `src/pages/Index.tsx`, qui ne fait qu'assembler les sections.
 
-## Section map
+## Où se trouve quoi
 
-| Order | Component | Anchor |
-|-------|-----------|--------|
-| 1 | `Navbar` | — |
-| 2 | `HeroSection` | — |
-| 3 | `ProblemSection` | `#probleme` |
-| 4 | `SolutionSection` | `#solution` |
-| 5 | `StepsSection` | `#methode` |
-| 6 | `TrustSection` | — |
-| 7 | `BetaSection` | `#tarifs` |
-| 8 | `FAQSection` | `#faq` |
-| 9 | `CTASection` | — |
-| 10 | `Footer` | — |
+| Fichier | Rôle |
+|---------|------|
+| `src/pages/Index.tsx` | Ordre des sections, branchement des drapeaux et des données |
+| `src/components/sections/` | Une section = un composant |
+| `src/content/fr.ts` | Tous les textes du site |
+| `src/content/validated.ts` | `DONNEES_VALIDEES` : seule source des prix, preuves, équipe, audio, liens légaux |
+| `src/config.ts` | Drapeaux `SHOW_*`, coordonnées, lien Calendly (`calendlyUrl(emplacement)`) |
+| `src/components/brand/` | Logo (pupille qui suit le curseur), regard du Hero, repère focal |
+| `src/components/CallButton.tsx` | L'unique appel à l'action : « Réserver un appel » (Calendly) |
+| `scripts/og/` | Source et script de l'image de partage `public/og-image.png` |
 
-All sections live in a single file: `src/pages/Index.tsx`.
+## Ordre des sections
 
-## Constants to update before going live
+| Ordre | Composant | Ancre | Affichage |
+|-------|-----------|-------|-----------|
+| 1 | `Navbar` + `MobileCallBar` | — | toujours |
+| 2 | `Hero` | `#hero` | toujours |
+| 3 | `CallExample` | `#exemple-appel` | toujours ; lecteur audio si `SHOW_DEMO_AUDIO` |
+| 4 | `Problem` | `#probleme` | toujours |
+| 5 | `Simulator` | `#simulateur` | `SHOW_SIMULATOR` |
+| 6 | `Comparison` | `#comparaison` | toujours |
+| 7 | `Proof` | `#preuve` | `SHOW_PROOF` |
+| 8 | `Process` | `#methode` | toujours |
+| 9 | `Offers` | `#offres` | toujours ; prix si `SHOW_PRICES`, « Votre risque » si `SHOW_GUARANTEE` |
+| 10 | `Fit` | `#pour-qui` | toujours |
+| 11 | `PatientData` | `#donnees` | toujours |
+| 12 | `Team` | `#equipe` | `SHOW_TEAM` |
+| 13 | `Faq` | `#faq` | toujours |
+| 14 | `FinalCta` | `#appel-final` | toujours |
+| 15 | `Footer` (hors `<main>`) | — | liens légaux si `SHOW_LEGAL_LINKS` |
 
-```ts
-const CALENDLY_URL = "https://calendly.com/VOTRE-LIEN-ICI"; // ← replace with your link
-const CONTACT_EMAIL = "contact@eyespilot.net";
-const CONTACT_PHONE = "+33644832903";
-const CONTACT_PHONE_DISPLAY = "06 44 83 29 03";
+La méthode, le simulateur et la preuve passent avant les offres : le médecin voit le processus et le contrôle qu'il garde avant le tarif.
+
+## Activer une section masquée
+
+Un drapeau à `true` ne suffit pas : la donnée correspondante doit aussi être remplie dans `src/content/validated.ts`, sinon la section reste masquée.
+
+| Drapeau | Donnée à remplir |
+|---------|------------------|
+| `SHOW_PRICES` | `offers.pack.prices`, `offers.voiceAgent.prices` (déjà renseignés) |
+| `SHOW_GUARANTEE` | `riskReversal` (texte validé) |
+| `SHOW_PROOF` | `proof` : `practice`, `metric`, `quote`, `callLog` |
+| `SHOW_TEAM` | `team` : `photo` (dans `public/`), `bio` |
+| `SHOW_DEMO_AUDIO` | `demoAudio` : fichier dans `public/audio/` + transcription horodatée |
+| `SHOW_LEGAL_LINKS` | `legalLinks` (pages existantes uniquement) |
+| `SHOW_SIMULATOR` | aucune donnée : le visiteur saisit ses chiffres |
+
+## Règles de contenu
+
+Aucune affirmation non prouvable : pas d'hébergement, de conformité, de certification, de pourcentage, de chiffre de performance, de délai, de témoignage inventé, ni rien de l'ancien positionnement (avis, pilote gratuit). Chiffres et faits viennent uniquement de `DONNEES_VALIDEES`.
+
+## Image de partage
+
+```bash
+npm run og:image
 ```
 
-## Logo
-
-`EyesPilotLogo` is an SVG with a cursor-tracking pupil (via `mousemove` on `window`).
-Pass `interactive={false}` to freeze the pupil — used in the hero badge and footer.
-
-## Custom Tailwind classes
-
-These classes are defined in `src/index.css` (not in `tailwind.config.ts`):
-
-- `navbar-glass` — frosted-glass effect for the sticky nav
-- `card-blue` — subtle blue-tinted card background
-- `hero-gradient` — primary gradient used on service icon backgrounds
-
-## Adding a section
-
-1. Write a new component in `src/pages/Index.tsx`
-2. Drop it into `EyesPilotLanding` at the desired position
-3. If it needs a nav anchor, add `<a href="#your-id">` to the `Navbar` link lists (both desktop and mobile)
+Rend `scripts/og/og-image.html` en `public/og-image.png` (1200 x 630) avec le Chrome installé, réseau bloqué.
 
 ## Tests
 
@@ -53,6 +69,11 @@ These classes are defined in `src/index.css` (not in `tailwind.config.ts`):
 npm test
 ```
 
-Test file: `src/test/landing.test.tsx`
-
-Covers: render smoke test, hero heading, all section headings, CTA link attributes, FAQ accordion toggle, contact info, mobile menu toggle.
+| Fichier | Couvre |
+|---------|--------|
+| `landing.test.tsx` | Rendu, titres, liens Calendly (nouvel onglet, utm), FAQ, contact, menu mobile, repères |
+| `forbidden-words.test.tsx` | Mots interdits, emojis, chiffres et prix dans le texte affiché et `index.html` ; sections masquées |
+| `call-example.test.tsx` | Conversation, annotations, fiche, SMS, lecteur audio |
+| `simulator.test.tsx` | Formule, champs vides par défaut, mention |
+| `offers.test.tsx` | Prix masqués ou affichés, contenu du pack, « Votre risque » |
+| `proof.test.tsx`, `team.test.tsx` | Affichage conditionnel aux données |
