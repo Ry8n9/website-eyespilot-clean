@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image de partage EyesPilot</title>
+    <!--
+      Source de public/og-image.png (1200 x 630).
+      Régénérer : npm run og:image
+      Aucune ressource externe : polices système uniquement.
+    -->
+    <style>
+      :root {
+        --primary: hsl(240 76% 50%);
+        --foreground: hsl(230 25% 15%);
+        --background: hsl(220 20% 97%);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; }
+      body {
+        background: var(--background);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        color: var(--foreground);
+        overflow: hidden;
+        position: relative;
+      }
+      .rings {
+        position: absolute;
+        right: -150px;
+        top: 50%;
+        width: 540px;
+        height: 540px;
+        transform: translateY(-50%);
+      }
+      .content {
+        position: absolute;
+        left: 88px;
+        top: 0;
+        bottom: 0;
+        width: 760px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--primary);
+      }
+      h1 {
+        font-size: 76px;
+        line-height: 1.04;
+        font-weight: 700;
+        letter-spacing: -0.035em;
+      }
+      h1 span { color: var(--primary); display: block; }
+      .bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 12px;
+        background: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="rings" viewBox="0 0 400 400" aria-hidden="true">
+      <defs>
+        <clipPath id="oeil"><ellipse cx="200" cy="200" rx="148" ry="86" /></clipPath>
+      </defs>
+      <g fill="none" stroke="hsl(240 76% 50%)">
+        <circle cx="200" cy="200" r="196" stroke-width="1" opacity="0.10" />
+        <circle cx="200" cy="200" r="160" stroke-width="1" opacity="0.14" />
+        <circle cx="200" cy="200" r="124" stroke-width="1" opacity="0.2" stroke-dasharray="2 6" />
+      </g>
+      <ellipse cx="200" cy="200" rx="150" ry="88" fill="white" />
+      <g clip-path="url(#oeil)">
+        <g transform="translate(200 200) scale(5.6) translate(-24 -24)">
+          <circle cx="24" cy="24" r="10" fill="hsl(240 76% 50%)" />
+          <g stroke="white" stroke-linecap="round">
+            <circle cx="24" cy="24" r="7" fill="none" stroke-width="1.4" opacity="0.9" />
+            <line x1="24" y1="24" x2="24" y2="17" stroke-width="1.6" />
+            <line x1="24" y1="24" x2="30.06" y2="27.5" stroke-width="1.6" />
+            <line x1="24" y1="24" x2="17.94" y2="27.5" stroke-width="1.6" />
+          </g>
+          <circle cx="24" cy="24" r="2" fill="white" />
+        </g>
+      </g>
+      <ellipse cx="200" cy="200" rx="150" ry="88" fill="none" stroke="hsl(240 76% 50%)" stroke-width="3" />
+    </svg>
+
+    <div class="content">
+      <div class="brand">
+        <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+          <ellipse cx="24" cy="24" rx="22" ry="13" fill="white" stroke="hsl(240 76% 50%)" stroke-width="2" />
+          <circle cx="24" cy="24" r="10" fill="hsl(240 76% 50%)" />
+          <g stroke="white" stroke-linecap="round">
+            <circle cx="24" cy="24" r="7" fill="none" stroke-width="1.4" opacity="0.9" />
+            <line x1="24" y1="24" x2="24" y2="17" stroke-width="1.6" />
+            <line x1="24" y1="24" x2="30.06" y2="27.5" stroke-width="1.6" />
+            <line x1="24" y1="24" x2="17.94" y2="27.5" stroke-width="1.6" />
+          </g>
+          <circle cx="24" cy="24" r="2" fill="white" />
+        </svg>
+        EyesPilot
+      </div>
+      <h1>Le téléphone sonne.<span>Votre consultation continue.</span></h1>
+    </div>
+    <div class="bar"></div>
+  </body>
+</html>
