@@ -17,7 +17,7 @@ export const Hero = () => (
 
         <h1
           id="hero-titre"
-          className="font-heading text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-foreground sm:text-6xl lg:text-[4.1rem] xl:text-[4.5rem]"
+          className="font-heading text-[2.6rem] font-extrabold leading-[1.04] text-foreground sm:text-6xl lg:text-[4.1rem] xl:text-[4.5rem]"
         >
           {hero.titleLine1}
           <br />

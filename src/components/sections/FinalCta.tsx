@@ -24,7 +24,7 @@ export const FinalCta = () => (
           </span>
           <h2
             id="appel-final-titre"
-            className="font-heading text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl"
+            className="font-heading text-3xl font-bold leading-tight text-white md:text-5xl"
           >
             {finalCta.title}
           </h2>

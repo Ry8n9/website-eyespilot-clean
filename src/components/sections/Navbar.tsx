@@ -30,7 +30,7 @@ export const Navbar = () => {
       <nav
         aria-label="Navigation principale"
         className={`fixed left-1/2 top-3 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 rounded-full px-4 py-2.5 transition-all duration-300 md:top-4 md:px-6 md:py-3 ${
-          scrolled || mobileOpen ? "navbar-glass shadow-lg shadow-foreground/5" : "bg-transparent"
+          scrolled || mobileOpen ? "navbar-glass" : "border border-transparent bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between gap-6">

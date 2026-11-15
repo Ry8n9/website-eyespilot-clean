@@ -31,7 +31,7 @@ export const LegalLayout = ({ title, children }: { title: string; children: Reac
       </header>
       <main className="flex-1 px-4 pb-16 pt-8 md:pt-12">
         <article className="container mx-auto max-w-3xl px-0">
-          <h1 className="font-heading text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">{title}</h1>
+          <h1 className="font-heading text-4xl font-extrabold text-foreground md:text-5xl">{title}</h1>
           <div className="mt-10 space-y-10">{children}</div>
         </article>
       </main>

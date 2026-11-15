@@ -96,6 +96,10 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     text-wrap: balance;
+    /* Plus Jakarta Sans a une espace étroite : interlettrage limité à
+       -0.02em et espace entre les mots légèrement élargie. */
+    letter-spacing: -0.02em;
+    word-spacing: 0.05em;
   }
 
   [id] {
@@ -143,8 +147,12 @@
   }
 
   .navbar-glass {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid hsl(var(--border) / 0.8);
+    box-shadow:
+      0 1px 2px hsl(230 25% 15% / 0.04),
+      0 8px 24px -8px hsl(230 25% 15% / 0.1);
   }
 }

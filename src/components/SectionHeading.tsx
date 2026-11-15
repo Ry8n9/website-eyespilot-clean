@@ -35,7 +35,7 @@ export const SectionHeading = ({
     <h2
       id={id}
       className={cn(
-        "font-heading text-3xl font-bold leading-[1.15] tracking-tight md:text-[2.5rem]",
+        "font-heading text-3xl font-bold leading-[1.15] md:text-[2.5rem]",
         tone === "light" ? "text-white" : "text-foreground",
       )}
     >
