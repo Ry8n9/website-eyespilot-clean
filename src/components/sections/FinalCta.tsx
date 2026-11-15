@@ -4,7 +4,7 @@ import { common, finalCta } from "@/content/fr";
 
 /** L'unique appel à l'action final, dans la carte sombre de la marque. */
 export const FinalCta = () => (
-  <section id="appel-final" aria-labelledby="appel-final-titre" className="px-4 py-16 md:py-24">
+  <section id="appel-final" aria-labelledby="appel-final-titre" className="px-4 section-y">
     <div className="container mx-auto max-w-6xl px-0">
       <div className="ink-card relative overflow-hidden rounded-[2rem] px-6 py-14 text-center md:px-16 md:py-20">
         <svg
@@ -24,7 +24,7 @@ export const FinalCta = () => (
           </span>
           <h2
             id="appel-final-titre"
-            className="font-heading text-3xl font-bold leading-tight text-white md:text-5xl"
+            className="font-heading text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.08] text-white"
           >
             {finalCta.title}
           </h2>

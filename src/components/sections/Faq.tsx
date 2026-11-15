@@ -9,7 +9,7 @@ export const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" aria-labelledby="faq-titre" className="px-4 py-16 md:py-24">
+    <section id="faq" aria-labelledby="faq-titre" className="px-4 section-y">
       <div className="container mx-auto grid max-w-6xl gap-10 px-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading id="faq-titre" eyebrow={faq.eyebrow} title={faq.title} lead={faq.lead} />

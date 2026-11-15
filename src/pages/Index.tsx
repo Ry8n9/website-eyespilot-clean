@@ -24,7 +24,7 @@ import { DONNEES_VALIDEES } from "@/content/validated";
  * de src/config.ts et des données de src/content/validated.ts.
  */
 const EyesPilotLanding = () => (
-  <div className="overflow-x-hidden pb-24 md:pb-0">
+  <div className="grain overflow-x-hidden pb-24 md:pb-0">
     <main>
       <Navbar />
       <MobileCallBar />

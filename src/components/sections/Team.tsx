@@ -10,12 +10,12 @@ import type { TeamMember } from "@/content/validated";
 export const Team = ({ members }: { members: TeamMember[] }) => {
   if (members.length === 0) return null;
   return (
-    <section id="equipe" aria-labelledby="equipe-titre" className="px-4 py-16 md:py-24">
+    <section id="equipe" aria-labelledby="equipe-titre" className="px-4 section-y">
       <div className="container mx-auto max-w-6xl px-0">
         <SectionHeading id="equipe-titre" eyebrow={team.eyebrow} title={team.title} />
         <ul className="mt-10 grid gap-5 md:grid-cols-2">
           {members.map((m) => (
-            <li key={m.name} className="flex gap-5 rounded-3xl border border-border bg-card p-6 md:p-8">
+            <li key={m.name} className="flex gap-5 rounded-3xl surface p-6 md:p-8">
               {m.photo ? (
                 <img
                   src={m.photo}

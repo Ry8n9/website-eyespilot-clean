@@ -21,7 +21,7 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
   const revealed = inView || reduced;
 
   return (
-    <section id="exemple-appel" aria-labelledby="exemple-appel-titre" className="px-4 py-16 md:py-24">
+    <section id="exemple-appel" aria-labelledby="exemple-appel-titre" className="px-4 section-y">
       <div className="container mx-auto max-w-6xl px-0">
         <SectionHeading
           id="exemple-appel-titre"
@@ -31,7 +31,7 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
         />
 
         <figure className="mt-10 md:mt-14">
-          <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl shadow-foreground/[0.04]">
+          <div className="overflow-hidden rounded-3xl surface-raised">
             {/* En-tête de l'appel */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 md:px-8">
               <div className="flex items-center gap-3">
@@ -112,7 +112,7 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
 
               {/* Ce que l'appel produit */}
               <div className="space-y-5 bg-background/60 px-5 py-6 md:px-8 md:py-8 lg:px-6">
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-2xl surface p-5">
                   <p className="mb-4 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
                     <FocalMark className="h-4 w-4" />
                     {callExample.ticket.title}
@@ -129,7 +129,7 @@ export const CallExample = ({ audio }: { audio: DemoAudio | null }) => {
                   </dl>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-2xl surface p-5">
                   <p className="mb-4 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
                     <FocalMark className="h-4 w-4" />
                     {callExample.sms.title}

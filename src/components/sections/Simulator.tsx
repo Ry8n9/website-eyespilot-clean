@@ -56,10 +56,10 @@ export const Simulator = () => {
   );
 
   return (
-    <section id="simulateur" aria-labelledby="simulateur-titre" className="px-4 py-16 md:py-24">
+    <section id="simulateur" aria-labelledby="simulateur-titre" className="px-4 section-y">
       <div className="container mx-auto max-w-6xl px-0">
         <SectionHeading id="simulateur-titre" eyebrow={simulator.eyebrow} title={simulator.title} lead={simulator.lead} />
-        <div className="mt-10 grid gap-6 rounded-3xl border border-border bg-card p-6 md:p-10 lg:grid-cols-[1fr_0.9fr] lg:gap-12">
+        <div className="mt-10 grid gap-6 rounded-3xl surface p-6 md:p-10 lg:grid-cols-[1fr_0.9fr] lg:gap-12">
           <div className="space-y-6">
             {field("calls", 1000, "1")}
             {field("minutes", 120, "0.5")}

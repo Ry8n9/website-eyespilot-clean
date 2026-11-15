@@ -10,12 +10,12 @@ const OURS = comparison.columns.length - 1;
  * écran ; sur mobile, une carte par critère.
  */
 export const Comparison = () => (
-  <section id="comparaison" aria-labelledby="comparaison-titre" className="px-4 py-16 md:py-24">
+  <section id="comparaison" aria-labelledby="comparaison-titre" className="px-4 section-y">
     <div className="container mx-auto max-w-6xl px-0">
       <SectionHeading id="comparaison-titre" eyebrow={comparison.eyebrow} title={comparison.title} lead={comparison.lead} />
 
       {/* Grand écran : vrai tableau */}
-      <div className="mt-10 hidden overflow-hidden rounded-3xl border border-border bg-card md:block">
+      <div className="mt-10 hidden overflow-hidden rounded-3xl surface md:block">
         <table className="w-full border-collapse text-left text-sm">
           <caption className="sr-only">{comparison.caption}</caption>
           <thead>
@@ -66,7 +66,7 @@ export const Comparison = () => (
       {/* Mobile : une carte par critère */}
       <ul className="mt-8 space-y-4 md:hidden">
         {comparison.rows.map((row) => (
-          <li key={row.criterion} className="rounded-2xl border border-border bg-card p-5">
+          <li key={row.criterion} className="rounded-2xl surface p-5">
             <h3 className="font-heading text-base font-bold text-foreground">{row.criterion}</h3>
             <dl className="mt-3 space-y-3 text-sm">
               {row.values.map((v, i) => (

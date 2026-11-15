@@ -9,7 +9,7 @@ import { processSteps as process } from "@/content/fr";
  * une mise au point progressive. Aucun délai précis.
  */
 const StepMark = ({ index }: { index: number }) => (
-  <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-card shadow-sm">
+  <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full surface">
     {index < 3 ? (
       <FocalMark rings={(index + 1) as 1 | 2 | 3} className="h-6 w-6" />
     ) : (
@@ -19,7 +19,7 @@ const StepMark = ({ index }: { index: number }) => (
 );
 
 export const Process = () => (
-  <section id="methode" aria-labelledby="methode-titre" className="px-4 py-16 md:py-24">
+  <section id="methode" aria-labelledby="methode-titre" className="px-4 section-y">
     <div className="container mx-auto max-w-6xl px-0">
       <SectionHeading id="methode-titre" eyebrow={process.eyebrow} title={process.title} lead={process.lead} />
 
@@ -35,7 +35,7 @@ export const Process = () => (
             <div className="flex-1">
               <h3 className="font-heading text-lg font-bold text-foreground md:text-xl">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-              <dl className="mt-4 space-y-2 rounded-2xl border border-border bg-card p-4 text-sm">
+              <dl className="mt-4 space-y-2 rounded-2xl surface p-4 text-sm">
                 <div>
                   <dt className="text-xs font-semibold uppercase tracking-[0.1em] text-primary">{process.callsLabel}</dt>
                   <dd className="mt-0.5 text-foreground">{step.calls}</dd>

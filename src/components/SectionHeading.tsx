@@ -21,11 +21,11 @@ export const SectionHeading = ({
   tone = "default",
   className,
 }: SectionHeadingProps) => (
-  <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
+  <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
     {eyebrow && (
       <p
         className={cn(
-          "mb-3 text-sm font-semibold uppercase tracking-[0.14em]",
+          "mb-4 text-xs font-medium uppercase tracking-[0.2em]",
           tone === "light" ? "text-white/75" : "text-primary",
         )}
       >
@@ -35,7 +35,7 @@ export const SectionHeading = ({
     <h2
       id={id}
       className={cn(
-        "font-heading text-3xl font-bold leading-[1.15] md:text-[2.5rem]",
+        "font-heading text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.08]",
         tone === "light" ? "text-white" : "text-foreground",
       )}
     >
@@ -44,7 +44,7 @@ export const SectionHeading = ({
     {lead && (
       <p
         className={cn(
-          "mt-4 text-base leading-relaxed md:text-lg",
+          "mt-5 max-w-[60ch] text-lg leading-relaxed",
           tone === "light" ? "text-white/80" : "text-muted-foreground",
         )}
       >

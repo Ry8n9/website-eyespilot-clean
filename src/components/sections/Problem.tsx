@@ -4,7 +4,7 @@ import { problem } from "@/content/fr";
 
 /** Trois situations du secrétariat, sans chiffre. */
 export const Problem = () => (
-  <section id="probleme" aria-labelledby="probleme-titre" className="px-4 py-16 md:py-24">
+  <section id="probleme" aria-labelledby="probleme-titre" className="px-4 section-y">
     <div className="container mx-auto grid max-w-6xl gap-10 px-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
       <div className="lg:sticky lg:top-32 lg:self-start">
         <SectionHeading id="probleme-titre" eyebrow={problem.eyebrow} title={problem.title} lead={problem.lead} />

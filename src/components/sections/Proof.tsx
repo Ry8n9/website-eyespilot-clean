@@ -13,7 +13,7 @@ export const Proof = ({ data }: { data: ProofData }) => {
   if (!hasContent) return null;
 
   return (
-    <section id="preuve" aria-labelledby="preuve-titre" className="px-4 py-16 md:py-24">
+    <section id="preuve" aria-labelledby="preuve-titre" className="px-4 section-y">
       <div className="container mx-auto max-w-6xl px-0">
         <SectionHeading id="preuve-titre" eyebrow={proof.eyebrow} title={proof.title} lead={data.practice ?? undefined} />
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -27,7 +27,7 @@ export const Proof = ({ data }: { data: ProofData }) => {
             </div>
           )}
           {data.quote && (
-            <figure className="rounded-3xl border border-border bg-card p-8">
+            <figure className="rounded-3xl surface p-8">
               <blockquote className="font-heading text-xl font-semibold leading-snug text-foreground md:text-2xl">
                 « {data.quote.text} »
               </blockquote>
@@ -37,7 +37,7 @@ export const Proof = ({ data }: { data: ProofData }) => {
             </figure>
           )}
           {data.callLog.length > 0 && (
-            <div className="rounded-3xl border border-border bg-card p-8 lg:col-span-2">
+            <div className="rounded-3xl surface p-8 lg:col-span-2">
               <p className="mb-4 flex items-center gap-2 font-heading text-sm font-bold text-foreground">
                 <FocalMark className="h-4 w-4" />
                 {proof.callLogTitle}

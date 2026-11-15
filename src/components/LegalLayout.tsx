@@ -16,7 +16,7 @@ export const LegalLayout = ({ title, children }: { title: string; children: Reac
   }, [title]);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="grain flex min-h-screen flex-col">
       <header className="px-4 py-6">
         <div className="container mx-auto flex max-w-3xl items-center justify-between px-0">
           <a href="/" className="flex items-center gap-2 font-heading text-lg font-extrabold text-primary">

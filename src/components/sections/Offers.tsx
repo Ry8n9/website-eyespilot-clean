@@ -42,13 +42,13 @@ const Price = ({ offer, showPrices, large }: { offer: Offer; showPrices: boolean
  * pas de grille de tarifs. Contenu et prix viennent de DONNEES_VALIDEES.
  */
 export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersProps) => (
-  <section id="offres" aria-labelledby="offres-titre" className="px-4 py-16 md:py-24">
+  <section id="offres" aria-labelledby="offres-titre" className="px-4 section-y">
     <div className="container mx-auto max-w-6xl px-0">
       <SectionHeading id="offres-titre" eyebrow={offers.eyebrow} title={offers.title} lead={offers.lead} />
 
       <article
         aria-labelledby="offre-pack"
-        className="relative mt-10 overflow-hidden rounded-3xl border-2 border-primary bg-card p-6 shadow-xl shadow-primary/10 md:p-10"
+        className="relative mt-10 overflow-hidden rounded-3xl surface-raised !border-2 !border-primary p-6 md:p-10"
       >
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           <div>
@@ -83,7 +83,7 @@ export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersPro
 
       <article
         aria-labelledby="offre-agent"
-        className="mt-5 flex flex-col gap-5 rounded-3xl border border-border bg-card p-6 md:flex-row md:items-center md:justify-between md:p-8"
+        className="mt-5 flex flex-col gap-5 rounded-3xl surface p-6 md:flex-row md:items-center md:justify-between md:p-8"
       >
         <div>
           <h3 id="offre-agent" className="font-heading text-lg font-bold text-foreground md:text-xl">
