@@ -1,7 +1,8 @@
 /**
  * Génère public/og-image.png (1200 x 630) à partir de scripts/og/og-image.html.
  * Utilise le Chrome installé sur la machine (channel "chrome") ; aucune
- * requête réseau n'est autorisée pendant le rendu.
+ * requête réseau n'est autorisée pendant le rendu. Plus Jakarta Sans est lue
+ * en local dans node_modules.
  *
  * Usage : npm run og:image
  */
@@ -20,6 +21,11 @@ const target = path.join(root, "public", "og-image.png");
     route.request().url().startsWith("file:") ? route.continue() : route.abort(),
   );
   await page.goto(pathToFileURL(source).href);
+  await page.evaluate(() => document.fonts.ready);
+  const family = await page.evaluate(() =>
+    document.fonts.check('800 74px "Plus Jakarta Sans"') ? "Plus Jakarta Sans" : "police de secours",
+  );
+  console.log(`Police du titre : ${family}`);
   await page.screenshot({ path: target, clip: { x: 0, y: 0, width: 1200, height: 630 } });
   await browser.close();
   console.log(`Image écrite : ${path.relative(root, target)}`);

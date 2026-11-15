@@ -6,9 +6,17 @@
     <!--
       Source de public/og-image.png (1200 x 630).
       Régénérer : npm run og:image
-      Aucune ressource externe : polices système uniquement.
+      Aucune ressource externe : Plus Jakarta Sans est lue dans node_modules
+      (@fontsource-variable), en local.
     -->
     <style>
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 200 800;
+        src: url("../../node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2")
+          format("woff2-variations");
+      }
       :root {
         --primary: hsl(240 76% 50%);
         --foreground: hsl(230 25% 15%);
@@ -18,7 +26,7 @@
       html, body { width: 1200px; height: 630px; }
       body {
         background: var(--background);
-        font-family: "Segoe UI", system-ui, sans-serif;
+        font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
         color: var(--foreground);
         overflow: hidden;
         position: relative;
@@ -47,15 +55,16 @@
         align-items: center;
         gap: 16px;
         font-size: 44px;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: -0.02em;
         color: var(--primary);
       }
       h1 {
-        font-size: 76px;
+        font-size: 74px;
         line-height: 1.04;
-        font-weight: 700;
-        letter-spacing: -0.035em;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        word-spacing: 0.05em;
       }
       h1 span { color: var(--primary); display: block; }
       .bar {
