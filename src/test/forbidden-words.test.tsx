@@ -56,12 +56,24 @@ describe("Mots interdits", () => {
     expect(indexHtml).not.toMatch(EMOJI);
   });
 
-  it("aucun chiffre affiché hors téléphone, durée de l'appel et année", () => {
-    const rest = pageText()
+  it("aucun chiffre affiché hors téléphone, durée de l'appel, année et simulateur", () => {
+    const { container } = render(<Index />);
+    // Le simulateur affiche ses bornes de saisie (« sur 10 », « de 0 à 10 ») :
+    // ce ne sont pas des affirmations, il est donc exclu de ce contrôle.
+    container.querySelector("#simulateur")?.remove();
+    const rest = (container.textContent ?? "")
       .replace(CONTACT.phoneDisplay, "")
       .replace(/15 min/g, "")
       .replace(String(new Date().getFullYear()), "");
     expect(rest).not.toMatch(/\d/);
+  });
+
+  it("le simulateur est affiché, sans valeur préremplie", () => {
+    expect(FLAGS.SHOW_SIMULATOR).toBe(true);
+    render(<Index />);
+    const sim = document.getElementById("simulateur") as HTMLElement;
+    expect(sim).toBeTruthy();
+    sim.querySelectorAll("input").forEach((input) => expect(input.value).toBe(""));
   });
 
   it("aucun prix affiché tant que SHOW_PRICES est faux", () => {
@@ -71,7 +83,7 @@ describe("Mots interdits", () => {
 
   it("les sections dépendant de données manquantes sont masquées", () => {
     render(<Index />);
-    ["simulateur", "preuve", "equipe"].forEach((id) => expect(document.getElementById(id)).toBeNull());
+    ["preuve", "equipe"].forEach((id) => expect(document.getElementById(id)).toBeNull());
     expect(document.querySelector("audio")).toBeNull();
   });
 });

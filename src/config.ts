@@ -20,7 +20,7 @@ export const FLAGS = {
   /** Liens vers les pages légales dans le pied de page. */
   SHOW_LEGAL_LINKS: false,
   /** Simulateur de temps de secrétariat. */
-  SHOW_SIMULATOR: false,
+  SHOW_SIMULATOR: true,
 } as const;
 
 export const CONTACT = {
