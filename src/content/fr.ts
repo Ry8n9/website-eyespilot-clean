@@ -365,4 +365,32 @@ export const legalPages = {
     },
     contact: { title: "Contact", intro: "Pour toute question concernant le site :" },
   },
+  privacy: {
+    title: "Confidentialité",
+    owner: { title: "Responsable du site", name: "Raison sociale ou nom", email: "Contact" },
+    /** Faits vérifiés dans le code ; src/test/privacy.test.tsx échoue si le code change. */
+    facts: [
+      {
+        title: "Cookies et mesure d'audience",
+        paragraphs: [
+          "Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience.",
+        ],
+      },
+      {
+        title: "Formulaires",
+        paragraphs: [
+          "Ce site ne contient aucun formulaire d'envoi. Le simulateur calcule l'estimation dans votre navigateur : les chiffres saisis ne sont envoyés nulle part.",
+          "Les liens courriel et téléphone ouvrent votre messagerie ou votre téléphone : rien ne transite par le site.",
+        ],
+      },
+      {
+        title: "Services tiers",
+        paragraphs: [
+          "Prise de rendez-vous : les boutons « Réserver un appel » ouvrent la page Calendly d'EyesPilot dans un nouvel onglet. Les informations que vous y saisissez sont recueillies par Calendly. Le lien indique à Calendly depuis quel endroit du site l'appel a été réservé.",
+          "Polices de caractères : les polices du site sont chargées depuis Google Fonts. À l'affichage de la page, votre navigateur contacte donc les serveurs de Google.",
+        ],
+      },
+    ],
+    host: { title: "Hébergement", intro: "Le site est hébergé par" },
+  },
 };

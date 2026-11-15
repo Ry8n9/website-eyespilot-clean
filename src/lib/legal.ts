@@ -19,5 +19,5 @@ export const footerLegalLinks = (
   show: boolean = FLAGS.SHOW_LEGAL_LINKS,
 ): LegalLink[] => {
   if (!show || isLegalBlockEmpty(legal)) return [];
-  return [legalPages.links.mentions];
+  return [legalPages.links.mentions, legalPages.links.privacy];
 };

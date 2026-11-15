@@ -59,6 +59,8 @@ Aucune affirmation non prouvable : pas d'hébergement, de conformité, de certif
 
 `/mentions-legales` (`src/pages/MentionsLegales.tsx`) est alimentée par le bloc `LEGAL` de `src/content/validated.ts` : raison sociale ou nom, forme juridique, SIREN, adresse, directeur de la publication, hébergeur, courriel. Tant que le bloc est vide, la route renvoie la page 404. Un champ vide masque sa ligne ; une section sans aucune donnée est masquée. Aucun texte juridique n'est rédigé à la place des données.
 
+`/confidentialite` (`src/pages/Confidentialite.tsx`) suit la même règle d'accès. Elle ne décrit que ce que le site fait réellement : aucun cookie, aucun outil d'analyse, aucun formulaire ; tiers : Calendly (lien) et Google Fonts (polices). `src/test/privacy.test.tsx` vérifie ces faits dans le code : si l'un change (police auto-hébergée, outil ajouté), le test échoue et la page doit être mise à jour.
+
 ## Image de partage
 
 ```bash
