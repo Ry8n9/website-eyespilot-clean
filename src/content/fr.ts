@@ -95,11 +95,11 @@ export const callExample = {
   ticket: {
     title: "Fiche transmise au secrétariat",
     rows: [
-      { label: "Motif", value: "Renouvellement d'ordonnance de lunettes" },
-      { label: "Patient", value: "M. Lefèvre, rappel au numéro de l'appel" },
-      { label: "Règle d'urgence", value: "Questions posées, aucun signe d'alerte signalé" },
-      { label: "Fait", value: "Lien de prise de rendez-vous envoyé par SMS" },
-      { label: "À faire", value: "Recontacter le patient : il souhaite parler à une personne" },
+      { label: "Motif", value: "Renouvellement d'ordonnance de lunettes", after: 2 },
+      { label: "Patient", value: "M. Lefèvre, rappel au numéro de l'appel", after: 2 },
+      { label: "Règle d'urgence", value: "Questions posées, aucun signe d'alerte signalé", after: 4 },
+      { label: "Fait", value: "Lien de prise de rendez-vous envoyé par SMS", after: 5 },
+      { label: "À faire", value: "Recontacter le patient : il souhaite parler à une personne", after: 7 },
     ],
   },
   sms: {
@@ -107,7 +107,10 @@ export const callExample = {
     sender: "Cabinet Dr Martin",
     text: "Bonjour, voici le lien pour prendre rendez-vous au cabinet du Dr Martin. Message automatique.",
     linkLabel: "Prendre rendez-vous",
+    /** Le SMS arrive avec cette réplique (numérotée à partir de 1). */
+    after: 5,
   },
+  replay: "Rejouer l'appel",
   audio: {
     title: "Écouter l'appel",
     transcriptLabel: "Transcription",
