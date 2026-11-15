@@ -146,6 +146,7 @@ export const simulator = {
     minutes: { label: "Minutes par appel, en moyenne", hint: "Prise de notes comprise" },
     share: { label: "Sur 10 de ces appels, combien confier à l'assistant ?", hint: "De 0 à 10" },
   },
+  units: { calls: "appels / jour", minutes: "min / appel", share: "sur 10" },
   formulaLabel: "Le calcul",
   formula: "appels par jour × minutes par appel × part confiée",
   empty: "Renseignez vos trois chiffres pour voir l'estimation.",
@@ -297,6 +298,7 @@ export const faq = {
   eyebrow: "Questions",
   title: "Les questions que vous vous posez.",
   lead: "Des réponses prudentes. Pour le reste, posez-les-nous pendant l'appel.",
+  more: "Une autre question ? Posez-la-nous pendant l'appel.",
   items: [
     {
       q: "Et si l'assistant se trompe ?",
@@ -341,6 +343,13 @@ export const finalCta = {
 export const footer = {
   tagline: "Assistant vocal pour les cabinets d'ophtalmologie.",
   contactTitle: "Contact",
+  navTitle: "La page",
+  nav: [
+    { href: "/#exemple-appel", label: "Exemple d'appel" },
+    { href: "/#methode", label: "Méthode" },
+    { href: "/#offres", label: "Offres" },
+    { href: "/#faq", label: "Questions" },
+  ],
 };
 
 export const legalPages = {

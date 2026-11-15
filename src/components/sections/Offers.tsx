@@ -38,67 +38,83 @@ const Price = ({ offer, showPrices, large }: { offer: Offer; showPrices: boolean
   );
 
 /**
- * Le pack en carte principale, l'agent vocal seul en ligne secondaire :
- * pas de grille de tarifs. Contenu et prix viennent de DONNEES_VALIDEES.
+ * Une seule carte : le pack en tête (plus profond : dégradé fin, halo,
+ * liste plus grande), l'agent vocal seul en ligne visuelle en dessous.
+ * Contenu et prix viennent uniquement de DONNEES_VALIDEES ; la liste
+ * « Inclus » est masquée tant qu'elle est vide.
  */
 export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersProps) => (
   <section id="offres" aria-labelledby="offres-titre" className="px-4 section-y">
     <div className="container mx-auto max-w-6xl px-0">
       <SectionHeading id="offres-titre" eyebrow={offers.eyebrow} title={offers.title} lead={offers.lead} />
 
-      <article
-        aria-labelledby="offre-pack"
-        className="relative mt-10 overflow-hidden rounded-3xl surface-raised !border-2 !border-primary p-6 md:p-10"
-      >
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-          <div>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary-foreground">
-              {offers.recommended}
-            </p>
-            <h3 id="offre-pack" className="font-heading text-2xl font-extrabold text-foreground md:text-3xl">
-              {pack.name}
-            </h3>
-            <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">{offers.packPitch}</p>
-            <div className="mt-6">
-              <Price offer={pack} showPrices={showPrices} large />
+      <div className="relative mt-12">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-x-6 -top-10 bottom-1/3 rounded-[3rem] bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.16),transparent_70%)] blur-2xl"
+        />
+        <div className="surface-raised relative overflow-hidden rounded-[2rem] !border-primary/50 shadow-[0_0_0_1px_hsl(var(--primary)/0.15),0_40px_80px_-32px_hsl(var(--primary)/0.45)]">
+          <article
+            aria-labelledby="offre-pack"
+            className="bg-[linear-gradient(160deg,hsl(var(--card))_0%,hsl(230_60%_98%)_55%,hsl(230_60%_95%)_100%)] p-6 md:p-10"
+          >
+            <div className={pack.includes.length > 0 ? "grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12" : ""}>
+              <div>
+                <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary-foreground shadow-[0_6px_16px_-6px_hsl(var(--primary)/0.6)]">
+                  {offers.recommended}
+                </p>
+                <h3 id="offre-pack" className="font-heading text-3xl font-extrabold text-foreground md:text-4xl">
+                  {pack.name}
+                </h3>
+                <p className="mt-4 max-w-md text-lg leading-relaxed text-muted-foreground">{offers.packPitch}</p>
+                <div className="mt-8">
+                  <Price offer={pack} showPrices={showPrices} large />
+                </div>
+                <CallButton placement="offre-pack" className="mt-6" />
+              </div>
+              {pack.includes.length > 0 && (
+                <div className="surface rounded-3xl p-6 lg:px-8">
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">{offers.includesLabel}</p>
+                  <ul className="mt-3 divide-y divide-border">
+                    {pack.includes.map((item) => (
+                      <li key={item} className="flex items-center gap-4 py-4 font-heading text-lg font-bold text-foreground md:text-xl">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/[0.08]">
+                          <FocalMark className="h-5 w-5" />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-            <CallButton placement="offre-pack" className="mt-6" />
-          </div>
-          <div className="card-blue flex flex-col justify-center rounded-2xl p-6 lg:px-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{offers.includesLabel}</p>
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:mt-5 lg:grid-cols-1 lg:divide-y lg:divide-[hsl(var(--card-blue-border))] lg:gap-0">
-              {pack.includes.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 font-heading text-base font-bold text-foreground lg:py-4 lg:text-lg"
-                >
-                  <FocalMark className="h-5 w-5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </article>
+          </article>
 
-      <article
-        aria-labelledby="offre-agent"
-        className="mt-5 flex flex-col gap-5 rounded-3xl surface p-6 md:flex-row md:items-center md:justify-between md:p-8"
-      >
-        <div>
-          <h3 id="offre-agent" className="font-heading text-lg font-bold text-foreground md:text-xl">
-            {voiceAgent.name}
-          </h3>
-          <p className="mt-1 text-sm text-muted-foreground">{offers.voiceAgentPitch}</p>
+          <article
+            aria-labelledby="offre-agent"
+            className="flex flex-col gap-5 border-t border-border bg-card/80 p-6 md:flex-row md:items-center md:justify-between md:px-10 md:py-7"
+          >
+            <div className="flex items-start gap-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background">
+                <FocalMark rings={2} className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 id="offre-agent" className="font-heading text-lg font-bold text-foreground md:text-xl">
+                  {voiceAgent.name}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground md:text-base">{offers.voiceAgentPitch}</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 md:items-end">
+              <Price offer={voiceAgent} showPrices={showPrices} />
+              <CallButton placement="offre-agent" size="sm" className="self-start px-5 md:self-end" />
+            </div>
+          </article>
         </div>
-        <div className="flex flex-col gap-4 md:items-end">
-          <Price offer={voiceAgent} showPrices={showPrices} />
-          <CallButton placement="offre-agent" size="sm" className="self-start px-5 md:self-end" />
-        </div>
-      </article>
+      </div>
 
       {riskReversal && (
-        <div className="mt-5 rounded-3xl border border-dashed border-primary/40 p-6 md:p-8">
+        <div className="mt-6 rounded-3xl border border-dashed border-primary/40 p-6 md:p-8">
           <h3 className="font-heading text-lg font-bold text-foreground">{offers.riskTitle}</h3>
           <p className="mt-2 max-w-2xl leading-relaxed text-muted-foreground">{riskReversal}</p>
         </div>

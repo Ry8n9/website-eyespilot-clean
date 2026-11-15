@@ -23,6 +23,14 @@ describe("Simulateur", () => {
     fireEvent.change(calls, { target: { value: "20" } });
     fireEvent.change(minutes, { target: { value: "3" } });
     fireEvent.change(share, { target: { value: "5" } });
-    expect(screen.getByText("30 min")).toBeInTheDocument();
+    // Valeur finale annoncée immédiatement (zone aria-live), le grand chiffre visible s'anime.
+    expect(screen.getAllByText("30 min")[0]).toBeInTheDocument();
+  });
+
+  it("montre les unités et aucune valeur préremplie", () => {
+    render(<Simulator />);
+    expect(screen.getByText("appels / jour")).toBeInTheDocument();
+    expect(screen.getByText("min / appel")).toBeInTheDocument();
+    screen.getAllByRole("spinbutton").forEach((input) => expect(input).toHaveValue(null));
   });
 });

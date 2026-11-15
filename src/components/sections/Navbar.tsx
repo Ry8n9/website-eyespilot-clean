@@ -43,7 +43,7 @@ export const Navbar = () => {
             {common.brand}
           </a>
 
-          <ul className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
+          <ul className="hidden items-center gap-7 whitespace-nowrap text-sm font-medium text-muted-foreground lg:flex">
             {nav.links.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="transition-colors hover:text-primary">
@@ -53,12 +53,12 @@ export const Navbar = () => {
             ))}
           </ul>
 
-          <CallButton placement="navbar" size="sm" className="hidden px-5 md:inline-flex" />
+          <CallButton placement="navbar" size="sm" className="ml-auto hidden px-5 md:inline-flex lg:ml-0" />
 
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            className="rounded-full p-2 text-primary md:hidden"
+            className="rounded-full p-2 text-primary lg:hidden"
             aria-label={mobileOpen ? nav.closeMenu : nav.openMenu}
             aria-expanded={mobileOpen}
             aria-controls="menu-mobile"
@@ -69,7 +69,7 @@ export const Navbar = () => {
       </nav>
 
       {mobileOpen && (
-        <div id="menu-mobile" className="fixed inset-x-4 top-20 z-40 md:hidden">
+        <div id="menu-mobile" className="fixed inset-x-4 top-20 z-40 lg:hidden">
           <div className="navbar-glass flex flex-col gap-1 rounded-2xl p-5 shadow-xl">
             {nav.links.map((link) => (
               <a

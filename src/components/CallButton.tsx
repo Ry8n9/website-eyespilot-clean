@@ -29,7 +29,7 @@ export const CallButton = ({
     asChild
     size={size}
     className={cn(
-      "rounded-full font-semibold",
+      "group rounded-full font-semibold",
       size === "lg" && "h-auto text-base pl-7 pr-6 py-4",
       tone === "primary" && "shadow-xl shadow-primary/20",
       tone === "light" && "bg-white text-primary hover:bg-white/90 shadow-lg",
@@ -39,7 +39,9 @@ export const CallButton = ({
     <a href={calendlyUrl(placement)} target="_blank" rel="noopener noreferrer" onClick={onClick} tabIndex={tabIndex}>
       {label}
       <span className="sr-only"> {common.newTab}</span>
-      {size === "lg" && <ArrowRight className="h-5 w-5" aria-hidden="true" />}
+      {size === "lg" && (
+        <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+      )}
     </a>
   </Button>
 );

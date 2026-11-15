@@ -1,6 +1,8 @@
 import { useId, useState } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { faq } from "@/content/fr";
+import { ArrowRight } from "lucide-react";
+import { calendlyUrl } from "@/config";
+import { common, faq } from "@/content/fr";
 import { cn } from "@/lib/utils";
 
 /** FAQ orientée objections. La première réponse est ouverte par défaut. */
@@ -44,14 +46,32 @@ export const Faq = () => {
                   id={`${uid}-r${i}`}
                   role="region"
                   aria-labelledby={`${uid}-q${i}`}
-                  hidden={!open}
-                  className="pb-6 pr-12"
+                  aria-hidden={!open}
+                  className={cn(
+                    "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
+                    open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+                  )}
                 >
-                  <p className="leading-relaxed text-muted-foreground">{item.a}</p>
+                  <div className="overflow-hidden">
+                    <p className="pb-6 pr-12 leading-relaxed text-muted-foreground">{item.a}</p>
+                  </div>
                 </div>
               </div>
             );
           })}
+          <p className="flex flex-col gap-3 py-6 text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            {faq.more}
+            <a
+              href={calendlyUrl("faq")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 font-semibold text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+            >
+              {common.cta}
+              <span className="sr-only"> {common.newTab}</span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+          </p>
         </div>
       </div>
     </section>
