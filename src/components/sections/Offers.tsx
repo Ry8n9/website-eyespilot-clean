@@ -58,7 +58,7 @@ export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersPro
             aria-labelledby="offre-pack"
             className="bg-[linear-gradient(160deg,hsl(var(--card))_0%,hsl(230_60%_98%)_55%,hsl(230_60%_95%)_100%)] p-6 md:p-10"
           >
-            <div className={pack.includes.length > 0 ? "grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12" : ""}>
+            <div className={pack.includes.length > 0 ? "grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12" : ""}>
               <div>
                 <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary-foreground shadow-[0_6px_16px_-6px_hsl(var(--primary)/0.6)]">
                   {offers.recommended}
@@ -77,14 +77,24 @@ export const Offers = ({ pack, voiceAgent, showPrices, riskReversal }: OffersPro
                   <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">{offers.includesLabel}</p>
                   <ul className="mt-3 divide-y divide-border">
                     {pack.includes.map((item) => (
-                      <li key={item} className="flex items-center gap-4 py-4 font-heading text-lg font-bold text-foreground md:text-xl">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/[0.08]">
+                      <li key={item.title} className="flex gap-4 py-4">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/[0.08]">
                           <FocalMark className="h-5 w-5" />
                         </span>
-                        {item}
+                        <div>
+                          <h4 className="font-heading text-lg font-bold text-foreground">{item.title}</h4>
+                          {item.description && (
+                            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
+                  {pack.conditions && (
+                    <p className="mt-2 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
+                      {pack.conditions}
+                    </p>
+                  )}
                 </div>
               )}
             </div>

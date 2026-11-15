@@ -7,10 +7,18 @@
  * dans `src/config.ts` vaut `true`.
  */
 
+export type OfferItem = {
+  title: string;
+  /** Description validée, reprise mot pour mot. Absente : seul le titre s'affiche. */
+  description?: string;
+};
+
 export type Offer = {
   name: string;
   /** Ce qui est inclus, tel que validé. Aucun détail ajouté. */
-  includes: string[];
+  includes: OfferItem[];
+  /** Conditions validées, affichées en petit sous la liste. */
+  conditions?: string;
   /** Montant(s) affiché(s) uniquement si FLAGS.SHOW_PRICES. */
   prices: { amount: string; label: string }[];
 };
@@ -64,18 +72,46 @@ export const DONNEES_VALIDEES = {
   offers: {
     pack: {
       name: "Le pack cabinet",
-      includes: ["Site web", "SEO local", "Agent vocal", "Accompagnement"],
+      includes: [
+        {
+          title: "Site web",
+          description:
+            "Un site d'une page ou plus complet, selon votre besoin défini lors de l'appel de découverte. Nom de domaine, hébergement et petites mises à jour compris.",
+        },
+        {
+          title: "SEO local",
+          description: "Gestion de vos fiches Google, de vos avis et de vos annuaires.",
+        },
+        {
+          title: "Agent vocal",
+          description:
+            "Un assistant qui décroche, envoie le lien de rendez-vous par SMS et transmet une fiche écrite au secrétariat, selon la règle d'urgence que vous avez validée.",
+        },
+        {
+          title: "Accompagnement",
+          description:
+            "Un accompagnement de 6 mois : paramétrage avec vous, période pilote sur vos vrais appels, bilan puis décision.",
+        },
+      ],
+      conditions:
+        "Paiement en plusieurs fois possible. Abonnement mensuel de l'agent vocal en plus, à partir du mois suivant la signature. Refontes complètes, nouvelles pages et grosses mises à jour : sur devis.",
       prices: [{ amount: "4 500 €", label: "" }],
     } satisfies Offer,
     voiceAgent: {
       name: "L'agent vocal seul",
-      includes: ["Agent vocal"],
+      includes: [{ title: "Agent vocal" }],
       prices: [
         { amount: "1 500 €", label: "de mise en place" },
         { amount: "490 €", label: "par mois" },
       ],
     } satisfies Offer,
   },
+
+  /**
+   * Chiffres validés, autorisés tels quels dans le texte affiché (le test
+   * des chiffres retire uniquement ces occurrences exactes).
+   */
+  figures: ["6 mois"],
 
   /** Texte du bloc « Votre risque ». Vide tant qu'il n'est pas validé. */
   riskReversal: null as string | null,

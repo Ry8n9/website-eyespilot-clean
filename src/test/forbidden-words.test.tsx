@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import Index from "@/pages/Index";
 import { CONTACT, FLAGS } from "@/config";
+import { DONNEES_VALIDEES } from "@/content/validated";
 
 /**
  * Garde-fou de la règle 2 du brief : aucune affirmation non prouvable,
@@ -43,8 +44,22 @@ const indexHtml = readFileSync(resolve(process.cwd(), "index.html"), "utf-8");
 
 describe("Mots interdits", () => {
   it("aucun mot interdit dans le texte affiché", () => {
-    const text = pageText();
+    // Seule exception : les descriptions validées du pack (« avis » dans le SEO
+    // local est prévu par DONNEES_VALIDEES). Elles sont retirées à l'identique,
+    // tout le reste de la page reste contrôlé.
+    let text = pageText();
+    DONNEES_VALIDEES.offers.pack.includes.forEach((i) => {
+      if (i.description) text = text.split(i.description).join(" ");
+    });
     FORBIDDEN.forEach((re) => expect(text, `trouvé : ${re}`).not.toMatch(re));
+  });
+
+  it("« avis » n'apparaît que dans le texte validé du SEO local", () => {
+    const matches = pageText().match(/\bavis\b/gi) ?? [];
+    const allowed = DONNEES_VALIDEES.offers.pack.includes
+      .map((i) => (i.description ?? "").match(/\bavis\b/gi)?.length ?? 0)
+      .reduce((a, b) => a + b, 0);
+    expect(matches.length).toBe(allowed);
   });
 
   it("aucun mot interdit dans index.html", () => {
@@ -63,7 +78,10 @@ describe("Mots interdits", () => {
     container.querySelector("#simulateur")?.remove();
     // Les maquettes étiquetées « données fictives » portent un horodatage fictif.
     container.querySelectorAll("[data-exemple]").forEach((el) => el.remove());
-    const rest = (container.textContent ?? "")
+    let text = container.textContent ?? "";
+    // Chiffres validés dans DONNEES_VALIDEES.figures : retirés à l'identique, aucun autre.
+    DONNEES_VALIDEES.figures.forEach((f) => (text = text.split(f).join(" ")));
+    const rest = text
       .replace(CONTACT.phoneDisplay, "")
       .replace(/15 min/g, "")
       .replace(String(new Date().getFullYear()), "");

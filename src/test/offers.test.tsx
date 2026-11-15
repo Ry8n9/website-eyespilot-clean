@@ -16,9 +16,11 @@ describe("Offres", () => {
 
   it("affiche le contenu du pack, et rien d'autre", () => {
     render(<Offers pack={pack} voiceAgent={voiceAgent} showPrices={false} riskReversal={null} />);
-    ["Site web", "SEO local", "Agent vocal", "Accompagnement"].forEach((item) =>
-      expect(screen.getByText(item)).toBeInTheDocument(),
-    );
+    pack.includes.forEach((item) => {
+      expect(screen.getAllByText(item.title)[0]).toBeInTheDocument();
+      if (item.description) expect(screen.getByText(item.description)).toBeInTheDocument();
+    });
+    expect(screen.getByText(pack.conditions as string)).toBeInTheDocument();
     expect(screen.getByText(offers.recommended)).toBeInTheDocument();
   });
 
@@ -33,5 +35,19 @@ describe("Offres", () => {
     render(<Offers pack={pack} voiceAgent={voiceAgent} showPrices={false} riskReversal="Texte validé" />);
     expect(screen.getByText(offers.riskTitle)).toBeInTheDocument();
     expect(screen.getByText("Texte validé")).toBeInTheDocument();
+  });
+});
+
+describe("Offres : contenu validé", () => {
+  it("reprend mot pour mot les éléments du pack", () => {
+    expect(pack.includes.map((i) => i.title)).toEqual(["Site web", "SEO local", "Agent vocal", "Accompagnement"]);
+    expect(pack.includes[3].description).toBe(
+      "Un accompagnement de 6 mois : paramétrage avec vous, période pilote sur vos vrais appels, bilan puis décision.",
+    );
+  });
+
+  it("masque la liste « Inclus » quand elle est vide", () => {
+    render(<Offers pack={{ ...pack, includes: [], conditions: undefined }} voiceAgent={voiceAgent} showPrices={false} riskReversal={null} />);
+    expect(screen.queryByText(offers.includesLabel)).toBeNull();
   });
 });
