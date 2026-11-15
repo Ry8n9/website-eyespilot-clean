@@ -338,3 +338,31 @@ export const footer = {
   tagline: "Assistant vocal pour les cabinets d'ophtalmologie.",
   contactTitle: "Contact",
 };
+
+export const legalPages = {
+  backHome: "Retour à l'accueil",
+  links: {
+    mentions: { href: "/mentions-legales", label: "Mentions légales" },
+    privacy: { href: "/confidentialite", label: "Confidentialité" },
+  },
+  mentions: {
+    title: "Mentions légales",
+    publisher: {
+      title: "Éditeur du site",
+      intro: "Le site www.eyespilot.net est édité par :",
+      name: "Raison sociale ou nom",
+      legalForm: "Forme juridique",
+      siren: "SIREN",
+      address: "Adresse",
+    },
+    director: { title: "Directeur de la publication" },
+    host: {
+      title: "Hébergement",
+      intro: "Le site est hébergé par :",
+      name: "Hébergeur",
+      address: "Adresse",
+      contact: "Contact",
+    },
+    contact: { title: "Contact", intro: "Pour toute question concernant le site :" },
+  },
+};

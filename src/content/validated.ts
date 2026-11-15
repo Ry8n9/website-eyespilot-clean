@@ -43,6 +43,23 @@ export type DemoAudio = {
 
 export type LegalLink = { label: string; href: string };
 
+/**
+ * Informations légales. Tout est vide tant que ce n'est pas fourni :
+ * aucune valeur n'est inventée. Tant que le bloc entier est vide, les
+ * pages /mentions-legales et /confidentialite ne sont pas accessibles ;
+ * une information manquante masque la section correspondante.
+ */
+export type LegalInfo = {
+  /** Raison sociale ou nom de l'éditeur. */
+  name: string | null;
+  legalForm: string | null;
+  siren: string | null;
+  address: string | null;
+  publicationDirector: string | null;
+  host: { name: string; address: string | null; contact: string | null } | null;
+  email: string | null;
+};
+
 export const DONNEES_VALIDEES = {
   offers: {
     pack: {
@@ -77,5 +94,14 @@ export const DONNEES_VALIDEES = {
 
   demoAudio: null as DemoAudio | null,
 
-  legalLinks: [] as LegalLink[],
+};
+
+export const LEGAL: LegalInfo = {
+  name: null,
+  legalForm: null,
+  siren: null,
+  address: null,
+  publicationDirector: null,
+  host: null,
+  email: null,
 };

@@ -15,6 +15,7 @@ import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { FLAGS } from "@/config";
+import { footerLegalLinks } from "@/lib/legal";
 import { DONNEES_VALIDEES } from "@/content/validated";
 
 /**
@@ -46,7 +47,7 @@ const EyesPilotLanding = () => (
       <Faq />
       <FinalCta />
     </main>
-    <Footer legalLinks={FLAGS.SHOW_LEGAL_LINKS ? DONNEES_VALIDEES.legalLinks : []} />
+    <Footer legalLinks={footerLegalLinks()} />
   </div>
 );
 

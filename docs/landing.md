@@ -48,12 +48,16 @@ Un drapeau à `true` ne suffit pas : la donnée correspondante doit aussi être 
 | `SHOW_PROOF` | `proof` : `practice`, `metric`, `quote`, `callLog` |
 | `SHOW_TEAM` | `team` : `photo` (dans `public/`), `bio` |
 | `SHOW_DEMO_AUDIO` | `demoAudio` : fichier dans `public/audio/` + transcription horodatée |
-| `SHOW_LEGAL_LINKS` | `legalLinks` (pages existantes uniquement) |
+| `SHOW_LEGAL_LINKS` | bloc `LEGAL` (au moins un champ) : les liens ne pointent que vers des pages accessibles |
 | `SHOW_SIMULATOR` | aucune donnée : le visiteur saisit ses chiffres |
 
 ## Règles de contenu
 
 Aucune affirmation non prouvable : pas d'hébergement, de conformité, de certification, de pourcentage, de chiffre de performance, de délai, de témoignage inventé, ni rien de l'ancien positionnement (avis, pilote gratuit). Chiffres et faits viennent uniquement de `DONNEES_VALIDEES`.
+
+## Pages légales
+
+`/mentions-legales` (`src/pages/MentionsLegales.tsx`) est alimentée par le bloc `LEGAL` de `src/content/validated.ts` : raison sociale ou nom, forme juridique, SIREN, adresse, directeur de la publication, hébergeur, courriel. Tant que le bloc est vide, la route renvoie la page 404. Un champ vide masque sa ligne ; une section sans aucune donnée est masquée. Aucun texte juridique n'est rédigé à la place des données.
 
 ## Image de partage
 
